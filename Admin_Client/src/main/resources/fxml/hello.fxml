@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="280.0" maxWidth="400.0" minHeight="280.0" minWidth="400.0" opacity="1.0" prefHeight="280.0" prefWidth="400.0" rotate="0.0" visible="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="Controllers.MainController">
+  <children>
+    <TabPane layoutX="0.0" layoutY="0.0" prefHeight="280.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="79.0">
+      <tabs>
+        <Tab text="Search">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TextField id="Search_CardNumber" fx:id="Search_User_ID" layoutX="15.0" layoutY="30.0" prefHeight="20.0" prefWidth="150.0" />
+                <TextField fx:id="Search_Name" layoutX="15.0" layoutY="70.0" prefHeight="20.0" prefWidth="150.0" />
+                <TextField id="Search_Acces" fx:id="Search_Role" layoutX="15.0" layoutY="110.0" prefHeight="20.0" prefWidth="150.0" />
+                <Text layoutX="15.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User ID" />
+                <Text layoutX="15.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                <Text layoutX="15.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role" />
+                <Button fx:id="Search_SearchAction" layoutX="192.0" layoutY="189.0" mnemonicParsing="false" onAction="#Search_SearchAction" text="Search" />
+                <TextField id="Search_Acces" fx:id="Search_Card" layoutX="15.0" layoutY="150.0" prefHeight="20.0" prefWidth="150.0" />
+                <TextField id="Search_Acces" fx:id="Search_State" layoutX="15.0" layoutY="190.0" prefHeight="20.0" prefWidth="150.0" />
+                <Text layoutX="15.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card" />
+                <Text layoutX="15.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State" />
+                <Text fx:id="Search_Message" layoutX="180.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                  <font>
+                    <Font size="10.0" />
+                  </font>
+                </Text>
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Add">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TextField fx:id="Add_Name" layoutX="15.0" layoutY="70.0" prefWidth="200.0" />
+                <TextField id="Add_Acces" fx:id="Add_Card" layoutX="15.0" layoutY="110.0" prefWidth="200.0" />
+                <Button fx:id="Add_Add" layoutX="167.0" layoutY="153.0" mnemonicParsing="false" onAction="#AddAction" text="Add" />
+                <Text layoutX="15.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                <Text layoutX="15.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card" />
+                <TextField id="Add_Acces" fx:id="Add_User_ID" layoutX="15.0" layoutY="30.0" prefWidth="200.0" />
+                <Text layoutX="15.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User ID" />
+                <Text fx:id="Add_Message" layoutX="247.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Change">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TextField id="Change_CardNumber" fx:id="Change_User_ID" layoutX="15.0" layoutY="30.0" prefWidth="200.0" />
+                <TextField fx:id="Change_Name" layoutX="15.0" layoutY="70.0" prefWidth="200.0" />
+                <TextField id="Change_Acces" fx:id="Change_Role" layoutX="15.0" layoutY="110.0" prefWidth="200.0" />
+                <TextField id="Change_OldCardNumber" fx:id="Change_Card" layoutX="15.0" layoutY="150.0" prefWidth="200.0" />
+                <Button fx:id="Change_Change" layoutX="143.0" layoutY="190.0" mnemonicParsing="false" onAction="#ChangeAction" text="Change" />
+                <Text layoutX="15.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User ID" />
+                <Text layoutX="15.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                <Text layoutX="15.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role" />
+                <Text layoutX="15.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card" />
+                <Button fx:id="Change_Search" layoutX="15.0" layoutY="190.0" mnemonicParsing="false" onAction="#Change_SearchAction" text="Search" />
+                <Text fx:id="Change_Message" layoutX="250.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+                <TextField id="Change_OldCardNumber" fx:id="Change_State" layoutX="242.0" layoutY="150.0" prefWidth="144.0" />
+                <Text layoutX="242.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Delete">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <TextField id="Delete_CardNumber" fx:id="Delete_User_ID" layoutX="15.0" layoutY="30.0" prefWidth="200.0" />
+                <Button fx:id="Delete_Delete" layoutX="150.0" layoutY="67.0" mnemonicParsing="false" onAction="#DeleteAction" text="Delete" />
+                <Text id="Delete_User_ID" layoutX="15.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User ID" />
+                <TextField fx:id="Delete_Name" layoutX="15.0" layoutY="110.0" prefWidth="200.0" />
+                <Button fx:id="Delete_Search" layoutX="15.0" layoutY="67.0" mnemonicParsing="false" onAction="#Delete_SearchAction" text="Search" />
+                <Text layoutX="20.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                <Text fx:id="Delete_Message" layoutX="15.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </children>
+</AnchorPane>
