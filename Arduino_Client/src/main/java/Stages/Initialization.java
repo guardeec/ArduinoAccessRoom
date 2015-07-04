@@ -1,4 +1,4 @@
-package Methods;
+package Stages;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,9 +10,7 @@ import java.util.Scanner;
  */
 public abstract class Initialization {
 
-    /*
-    ** seting the files, if they are not exist - make them
-     */
+    //making the read and write file
     public static void makeFiles(File readFile, File writeFile){
         if(!readFile.exists()){
             try {
@@ -32,6 +30,7 @@ public abstract class Initialization {
         }
     }
 
+    //read the congig.txt and set the confoguration params
     public static String[] setCofiguration(File config){
         String[] configuration = null;
         if(config.exists()){

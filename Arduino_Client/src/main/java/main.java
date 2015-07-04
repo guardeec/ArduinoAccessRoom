@@ -1,11 +1,7 @@
-import Methods.Initialization;
+import Stages.Initialization;
+import Stages.loop;
 
 import java.io.*;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
 
 /**
  * Created by guardeec on 18.05.15.
