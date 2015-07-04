@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>Arduino_GetAcces</servlet-name>
-        <servlet-class>Servlets.Arduino_Client.Arduino_GetAcces</servlet-class>
+        <servlet-class>Servlets.Arduino_Client.Arduino_GetAccess</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Add_User</servlet-name>
