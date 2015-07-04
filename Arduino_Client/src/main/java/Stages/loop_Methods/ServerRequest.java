@@ -1,6 +1,4 @@
 package Stages.loop_Methods;
-
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -9,9 +7,6 @@ import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by guardeec on 22.06.15.
- */
 public abstract class ServerRequest {
 
     /*
@@ -32,7 +27,7 @@ public abstract class ServerRequest {
      */
     public static Map<String, String> make(Map<String, String> input, String httpAddress){
 
-        URLConnection conn = null;
+        URLConnection conn;
         String message =    "user_card="+input.get("user_card")+"&"+
                             "device_id="+input.get("device_id")
         ;

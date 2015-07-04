@@ -1,1 +1,1 @@
-_SERVER_CECT
+user_name=UNDEFINED&user_id=UNDEFINED&user_access=0
