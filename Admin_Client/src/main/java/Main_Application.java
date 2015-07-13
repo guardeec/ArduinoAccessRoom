@@ -16,7 +16,7 @@ public class Main_Application extends Application {
     public void start(Stage stage) throws Exception {
 
         FXMLLoader loader = new FXMLLoader();
-        Parent root = (Parent) loader.load(getClass().getResourceAsStream("/fxml/hello.fxml"));
+        Parent root = (Parent) loader.load(getClass().getResourceAsStream("/fxml/technical.fxml"));
 
         stage.setTitle("Arduino Admin");
         stage.setScene(new Scene(root));
