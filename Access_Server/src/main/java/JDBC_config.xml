@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        "
+        >
+
+       <bean id="dataSourceArduino" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+              <!-- access -->
+              <property name="driverClass" value="org.postgresql.Driver" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/postgres" />
+              <property name="user" value="arduino" />
+              <property name="password" value="326787max" />
+              <!-- pool sizing -->
+              <property name="initialPoolSize" value="3" />
+              <property name="minPoolSize" value="6" />
+              <property name="maxPoolSize" value="25" />
+              <property name="acquireIncrement" value="3" />
+              <property name="maxStatements" value="0" />
+              <!-- retries -->
+              <property name="acquireRetryAttempts" value="30" />
+              <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
+              <property name="breakAfterAcquireFailure" value="false" />
+              <!-- refreshing connections -->
+              <property name="maxIdleTime" value="180" /> <!-- 3min -->
+              <property name="maxConnectionAge" value="10" /> <!-- 1h -->
+              <!-- timeouts and testing -->
+              <property name="checkoutTimeout" value="5000" /> <!-- 5s -->
+              <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
+              <property name="testConnectionOnCheckout" value="true" />
+              <property name="preferredTestQuery" value="SELECT 1" />
+              <property name="testConnectionOnCheckin" value="true" />
+       </bean>
+
+       <bean id="dataSourceAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+              <!-- access -->
+              <property name="driverClass" value="org.postgresql.Driver" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/postgres" />
+              <property name="user" value="administrator" />
+              <property name="password" value="326787max" />
+              <!-- pool sizing -->
+              <property name="initialPoolSize" value="3" />
+              <property name="minPoolSize" value="6" />
+              <property name="maxPoolSize" value="25" />
+              <property name="acquireIncrement" value="3" />
+              <property name="maxStatements" value="0" />
+              <!-- retries -->
+              <property name="acquireRetryAttempts" value="30" />
+              <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
+              <property name="breakAfterAcquireFailure" value="false" />
+              <!-- refreshing connections -->
+              <property name="maxIdleTime" value="180" /> <!-- 3min -->
+              <property name="maxConnectionAge" value="10" /> <!-- 1h -->
+              <!-- timeouts and testing -->
+              <property name="checkoutTimeout" value="5000" /> <!-- 5s -->
+              <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
+              <property name="testConnectionOnCheckout" value="true" />
+              <property name="preferredTestQuery" value="SELECT 1" />
+              <property name="testConnectionOnCheckin" value="true" />
+       </bean>
+
+       <bean id="Arduino_DAO" class="JDBC.Arduino">
+              <property name="dataSource" ref="dataSourceArduino" />
+       </bean>
+
+       <bean id="Admin_DAO" class="JDBC.Admin">
+              <property name="dataSource" ref="dataSourceAdmin" />
+       </bean>
+
+
+</beans>
