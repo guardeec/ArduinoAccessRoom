@@ -1,3 +1,7 @@
-localhost:8080/Acces
+localhost:8080/Access
+localhost:8080/checkRunnable
+localhost:8080/Access
 read.txt
 write.txt
+runnable.txt
+a.txt

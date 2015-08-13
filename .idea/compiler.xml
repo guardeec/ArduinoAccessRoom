@@ -23,18 +23,17 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="Acces_Server" />
+        <module name="AccessServer" />
         <module name="Admin_Client" />
         <module name="Arduino_Client" />
-        <module name="Arduino_Client_aplha0.1" />
         <module name="Syslog_Server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Acces_Server" target="1.5" />
-      <module name="Admin_Client" target="1.8" />
+      <module name="AccessServer" target="1.8" />
+      <module name="Admin_Client" target="1.5" />
       <module name="Arduino" target="1.5" />
       <module name="Arduino_Client" target="1.5" />
-      <module name="Arduino_Client_aplha0.1" target="1.5" />
       <module name="Syslog_Server" target="1.5" />
     </bytecodeTargetLevel>
   </component>

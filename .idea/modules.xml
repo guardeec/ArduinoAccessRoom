@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Access_Server/AccessServer.iml" filepath="$PROJECT_DIR$/Access_Server/AccessServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Access_Server/Access_Server.iml" filepath="$PROJECT_DIR$/Access_Server/Access_Server.iml" />
       <module fileurl="file://$PROJECT_DIR$/Admin_Client/Admin_Client.iml" filepath="$PROJECT_DIR$/Admin_Client/Admin_Client.iml" />
       <module fileurl="file://$PROJECT_DIR$/Arduino.iml" filepath="$PROJECT_DIR$/Arduino.iml" />
       <module fileurl="file://$PROJECT_DIR$/Arduino_Client/Arduino_Client.iml" filepath="$PROJECT_DIR$/Arduino_Client/Arduino_Client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Arduino_Client_aplha0.1/Arduino_Client_aplha0.1.iml" filepath="$PROJECT_DIR$/Arduino_Client_aplha0.1/Arduino_Client_aplha0.1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Syslog_Server/Syslog_Server.iml" filepath="$PROJECT_DIR$/Syslog_Server/Syslog_Server.iml" />
     </modules>
   </component>

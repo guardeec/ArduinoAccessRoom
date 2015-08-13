@@ -1,7 +1,6 @@
 package Controllers.GuestCard;
 
-import Controllers.TechnicalController;
-import POJO.Device;
+import Controllers.Device.DeviceController;
 import POJO.GuestCard;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -19,7 +19,12 @@ import java.io.IOException;
 /**
  * Created by root on 13.07.15.
  */
-public class GuestCardController extends TechnicalController {
+public class GuestCardController extends DeviceController {
+
+    public static Stage addStage;
+    public static Stage changeStage;
+    public static Stage deleteStage;
+
     @FXML
     private TextField guestCardNumber;
     @FXML
@@ -29,6 +34,8 @@ public class GuestCardController extends TechnicalController {
 
     @FXML
     private TableView<GuestCard> guestTable;
+
+
 
     public void findGuestBtnAction(){
         ObservableList<GuestCard> guestCards = FXCollections.observableArrayList(
@@ -58,11 +65,11 @@ public class GuestCardController extends TechnicalController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene secondScene = new Scene(root);
-        Stage secondStage = new Stage();
-        secondStage.setTitle("Добавление Гостевой Карты");
-        secondStage.setScene(secondScene);
-        secondStage.show();
+        Scene scene = new Scene(root);
+        addStage = new Stage();
+        addStage.setTitle("Добавление Гостевой Карты");
+        addStage.setScene(scene);
+        addStage.show();
     }
 
     @FXML
@@ -74,11 +81,11 @@ public class GuestCardController extends TechnicalController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene secondScene = new Scene(root);
-        Stage secondStage = new Stage();
-        secondStage.setTitle("Изменение Гостевой Карты");
-        secondStage.setScene(secondScene);
-        secondStage.show();
+        Scene scene = new Scene(root);
+        changeStage = new Stage();
+        changeStage.setTitle("Изменение Гостевой Карты");
+        changeStage.setScene(scene);
+        changeStage.show();
     }
 
     @FXML
@@ -90,10 +97,10 @@ public class GuestCardController extends TechnicalController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene secondScene = new Scene(root);
-        Stage secondStage = new Stage();
-        secondStage.setTitle("Удаление Гостевой Карты");
-        secondStage.setScene(secondScene);
-        secondStage.show();
+        Scene scene = new Scene(root);
+        deleteStage = new Stage();
+        deleteStage.setTitle("Удаление Гостевой Карты");
+        deleteStage.setScene(scene);
+        deleteStage.show();
     }
 }

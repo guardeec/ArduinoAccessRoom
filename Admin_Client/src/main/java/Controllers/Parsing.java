@@ -25,7 +25,7 @@ public class Parsing {
 
         if(StrokeNumbers>1){
 
-            ArrayList<String> ArrayMap = new ArrayList<>();
+            ArrayList<String> ArrayMap = new ArrayList<String>();
             for(int i=0 ; i<request.length(); i++){
 
                 if (request.charAt(i)=='['){
@@ -88,8 +88,8 @@ public class Parsing {
             }
         }
 
-        if (request.contains("role=")) {
-            int startIndex = request.lastIndexOf("role=") + "role=".length();
+        if (request.contains("Roles=")) {
+            int startIndex = request.lastIndexOf("Roles=") + "Roles=".length();
             while (request.charAt(startIndex)!=',' && request.charAt(startIndex)!=']'){
                 response[3] +=request.charAt(startIndex);
                 startIndex++;

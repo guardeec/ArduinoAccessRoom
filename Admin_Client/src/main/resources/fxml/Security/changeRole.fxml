@@ -58,12 +58,12 @@
             </VBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="changeSecurityChangeBtnAction" alignment="CENTER" mnemonicParsing="false" onAction="#addDeviceBtnAddAction" text="Добавить">
+                  <Button fx:id="changeSecurityChangeBtnAction" alignment="CENTER" mnemonicParsing="false" onAction="#changeSecurityChangeBtnAction" text="Изменить">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="changeSecurityFindBtnAction" alignment="CENTER" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#addDeviceBtnAddAction" text="Найти">
+                  <Button fx:id="changeSecurityFindBtnAction" alignment="CENTER" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#changeSecurityFindBtnAction" text="Найти">
                      <HBox.margin>
                         <Insets bottom="10.0" left="125.0" right="10.0" />
                      </HBox.margin>

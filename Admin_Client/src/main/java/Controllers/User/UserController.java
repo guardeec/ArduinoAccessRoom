@@ -1,7 +1,6 @@
 package Controllers.User;
 
-import Controllers.ReceptionController;
-import POJO.Device;
+import Controllers.GuestCard.GuestCardController;
 import POJO.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -18,7 +18,11 @@ import java.io.IOException;
 /**
  * Created by root on 13.07.15.
  */
-public class UserController  extends ReceptionController {
+public class UserController  extends GuestCardController {
+
+    public static Stage addStage;
+    public static Stage changeStage;
+    public static Stage deleteStage;
 
     @FXML
     private TextField userId;
@@ -29,6 +33,8 @@ public class UserController  extends ReceptionController {
 
     @FXML
     private TableView<User> userTable;
+
+
 
     @FXML
     public void findUserBtnAction(){
@@ -50,11 +56,11 @@ public class UserController  extends ReceptionController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene secondScene = new Scene(root);
-        Stage secondStage = new Stage();
-        secondStage.setTitle("Добавление Пользователя");
-        secondStage.setScene(secondScene);
-        secondStage.show();
+        Scene scene = new Scene(root);
+        addStage = new Stage();
+        addStage.setTitle("Добавление Пользователя");
+        addStage.setScene(scene);
+        addStage.show();
     }
 
     @FXML
@@ -66,11 +72,11 @@ public class UserController  extends ReceptionController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene secondScene = new Scene(root);
-        Stage secondStage = new Stage();
-        secondStage.setTitle("Изменение Пользователя");
-        secondStage.setScene(secondScene);
-        secondStage.show();
+        Scene scene = new Scene(root);
+        changeStage = new Stage();
+        changeStage.setTitle("Изменение Пользователя");
+        changeStage.setScene(scene);
+        changeStage.show();
     }
 
     @FXML
@@ -82,10 +88,10 @@ public class UserController  extends ReceptionController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene secondScene = new Scene(root);
-        Stage secondStage = new Stage();
-        secondStage.setTitle("Удаление Пользователя");
-        secondStage.setScene(secondScene);
-        secondStage.show();
+        Scene scene = new Scene(root);
+        deleteStage = new Stage();
+        deleteStage.setTitle("Удаление Пользователя");
+        deleteStage.setScene(scene);
+        deleteStage.show();
     }
 }

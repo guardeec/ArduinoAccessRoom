@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" opacity="1.0" prefHeight="100.0" prefWidth="300.0" rotate="0.0" visible="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainController">
+<AnchorPane id="AnchorPane" opacity="1.0" prefHeight="100.0" prefWidth="300.0" rotate="0.0" visible="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.User.changeUserController">
    <children>
       <VBox layoutX="121.0" prefHeight="280.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -18,7 +18,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField prefWidth="200.0">
+                  <TextField fx:id="changeUserId" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
                      </VBox.margin>
@@ -32,7 +32,7 @@
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField prefWidth="200.0">
+                  <TextField fx:id="changeUserName" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
                      </VBox.margin>
@@ -46,7 +46,7 @@
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField prefWidth="200.0">
+                  <TextField fx:id="changeUserRole" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
                      </VBox.margin>
@@ -55,12 +55,12 @@
             </VBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" text="Изменить">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#changeUserChangeBtnAction" text="Изменить">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" text="Найти">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#changeUserFindBtnAction" text="Найти">
                      <HBox.margin>
                         <Insets bottom="10.0" left="123.0" right="10.0" />
                      </HBox.margin>

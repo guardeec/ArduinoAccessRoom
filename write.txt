@@ -1,1 +1,1 @@
-user_name=UNDEFINED&user_id=UNDEFINED&user_access=0
+name=UNKNOWN&id=UNKNOWN&access=false

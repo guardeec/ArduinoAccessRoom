@@ -4,51 +4,281 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+
+    <!--                                      -->
+    <!--                Servlets              -->
+    <!--             Don`t touch!!!           -->
+    <!--                                      -->
+    <!-- getAccess -->
     <servlet>
-        <servlet-name>Arduino_GetAcces</servlet-name>
-        <servlet-class>Servlets.Arduino_Client.Arduino_GetAccess</servlet-class>
+        <servlet-name>getAccess</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Arduino_Client.getAccess</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Add_User</servlet-name>
-        <servlet-class>Servlets.Admin_Client.Add_User</servlet-class>
+        <servlet-name>cashAdminDB</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Arduino_Client.cashAdminDB</servlet-class>
+    </servlet>
+    <!-- DeviceAdmin -->
+    <servlet>
+        <servlet-name>addDevice</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.DeviceAdmin.addDevice</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Change_User</servlet-name>
-        <servlet-class>Servlets.Admin_Client.Change_User</servlet-class>
+        <servlet-name>changeDevice</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.DeviceAdmin.changeDevice</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Delete_User</servlet-name>
-        <servlet-class>Servlets.Admin_Client.Delete_User</servlet-class>
+        <servlet-name>deleteDevice</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.DeviceAdmin.deleteDevice</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Get_User</servlet-name>
-        <servlet-class>Servlets.Admin_Client.Get_User</servlet-class>
+        <servlet-name>getDevice</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.DeviceAdmin.getDevice</servlet-class>
+    </servlet>
+    <!-- guestCardAdmin -->
+    <servlet>
+        <servlet-name>addGuestCard</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.GuestCardAdmin.addGuestCard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>changeGuestCard</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.GuestCardAdmin.changeGuestCard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteGuestCard</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.GuestCardAdmin.deleteGuestCard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getGuestCard</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.GuestCardAdmin.getGuestCard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>checkFreeCards</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.GuestCardAdmin.checkFreeCards</servlet-class>
+    </servlet>
+    <!-- userAdmin -->
+    <servlet>
+        <servlet-name>addUser</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.UserAdmin.addUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>changeUser</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.UserAdmin.changeUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>checkFreeCardsUser</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.UserAdmin.checkFreeCards</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteUser</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.UserAdmin.deleteUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getRolesUser</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.UserAdmin.getRoles</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getUser</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.UserAdmin.getUser</servlet-class>
+    </servlet>
+    <!-- securityAdmin -->
+    <servlet>
+        <servlet-name>addCard</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Cards.addCard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>changeCard</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Cards.changeCard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteCard</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Cards.deleteCard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getCard</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Cards.getCard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getSecurityDevice</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Devices.getDevice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>changePolicyOnDevice</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Polices.changePolicyOnDevice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getPolicy</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Polices.getPolicy</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getPolicyOnDevice</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Polices.getPolicyOnDevice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addRole</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Roles.addRole</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>changeRole</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Roles.changeRole</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteRole</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Roles.deleteRole</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getRole</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Roles.getRole</servlet-class>
+    </servlet>
+    <!-- authorisation -->
+    <servlet>
+        <servlet-name>checkRunnable</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Authorisation.checkRunnable</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getAdminType</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Authorisation.getAdminType</servlet-class>
     </servlet>
 
 
-    <servlet-mapping>
-        <servlet-name>Arduino_GetAcces</servlet-name>
-        <url-pattern>/Acces</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Add_User</servlet-name>
-        <url-pattern>/Add</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Change_User</servlet-name>
-        <url-pattern>/Change</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Delete_User</servlet-name>
-        <url-pattern>/Delete</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Get_User</servlet-name>
-        <url-pattern>/Get</url-pattern>
-    </servlet-mapping>
 
 
 
+
+    <!--                                      -->
+    <!--                Servlets              -->
+    <!--           You can change url         -->
+    <!--                                      -->
+    <!-- getAccess -->
+    <servlet-mapping>
+        <servlet-name>getAccess</servlet-name>
+        <url-pattern>/getAccess</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cashAdminDB</servlet-name>
+        <url-pattern>/cashAdminDB</url-pattern>
+    </servlet-mapping>
+    <!-- DeviceAdmin -->
+    <servlet-mapping>
+        <servlet-name>addDevice</servlet-name>
+        <url-pattern>/deviceAdmin/addDevice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changeDevice</servlet-name>
+        <url-pattern>/deviceAdmin/changeDevice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteDevice</servlet-name>
+        <url-pattern>/deviceAdmin/deleteDevice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getDevice</servlet-name>
+        <url-pattern>/deviceAdmin/getDevice</url-pattern>
+    </servlet-mapping>
+    <!-- guestCardAdmin -->
+    <servlet-mapping>
+        <servlet-name>addGuestCard</servlet-name>
+        <url-pattern>/guestAdmin/addGuest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changeGuestCard</servlet-name>
+        <url-pattern>/guestAdmin/changeGuest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteGuestCard</servlet-name>
+        <url-pattern>/guestAdmin/deleteGuest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getGuestCard</servlet-name>
+        <url-pattern>/guestAdmin/getGuest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkFreeCards</servlet-name>
+        <url-pattern>/guestAdmin/checkFreeCards</url-pattern>
+    </servlet-mapping>
+    <!-- userAdmin -->
+    <servlet-mapping>
+        <servlet-name>addUser</servlet-name>
+        <url-pattern>/userAdmin/addUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changeUser</servlet-name>
+        <url-pattern>/userAdmin/changeUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkFreeCardsUser</servlet-name>
+        <url-pattern>/userAdmin/checkFreeCards</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteUser</servlet-name>
+        <url-pattern>/userAdmin/deleteUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getRolesUser</servlet-name>
+        <url-pattern>/userAdmin/getRolesUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getUser</servlet-name>
+        <url-pattern>/userAdmin/getUser</url-pattern>
+    </servlet-mapping>
+    <!-- securityAdmin -->
+    <servlet-mapping>
+        <servlet-name>addCard</servlet-name>
+        <url-pattern>/securityAdmin/addCard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changeCard</servlet-name>
+        <url-pattern>/securityAdmin/changeCard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteCard</servlet-name>
+        <url-pattern>/securityAdmin/deleteCard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getCard</servlet-name>
+        <url-pattern>/securityAdmin/getCard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getSecurityDevice</servlet-name>
+        <url-pattern>/securityAdmin/getDevice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changePolicyOnDevice</servlet-name>
+        <url-pattern>/securityAdmin/changePolicyOnDevice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getPolicy</servlet-name>
+        <url-pattern>/securityAdmin/getPolicy</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getPolicyOnDevice</servlet-name>
+        <url-pattern>/securityAdmin/getPolicyOnDevice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addRole</servlet-name>
+        <url-pattern>/securityAdmin/addRole</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changeRole</servlet-name>
+        <url-pattern>/securityAdmin/changeRole</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteRole</servlet-name>
+        <url-pattern>/securityAdmin/deleteRole</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getRole</servlet-name>
+        <url-pattern>/securityAdmin/getRole</url-pattern>
+    </servlet-mapping>
+    <!-- authorisation -->
+    <servlet-mapping>
+        <servlet-name>checkRunnable</servlet-name>
+        <url-pattern>/checkRunnable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getAdminType</servlet-name>
+        <url-pattern>/getAdminType</url-pattern>
+    </servlet-mapping>
 
 
 

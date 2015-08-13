@@ -13,7 +13,7 @@
    <children>
       <TabPane layoutX="40.0" layoutY="13.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab text="Технический">
+          <Tab fx:id="deviceTab" onSelectionChanged="#init" text="Технический">
                <content>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -136,7 +136,7 @@
                   </HBox>
                </content>
           </Tab>
-          <Tab text="Гостевые Карты">
+          <Tab fx:id="guestTab" onSelectionChanged="#init" text="Гостевые Карты">
                <content>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -264,7 +264,7 @@
                   </HBox>
                </content>
           </Tab>
-            <Tab text="Отдел Персонала">
+            <Tab fx:id="userTab" onSelectionChanged="#init" text="Отдел Персонала">
                <content>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -387,7 +387,7 @@
                   </HBox>
                </content>
             </Tab>
-            <Tab text="Безопасность">
+            <Tab fx:id="securityTab" onSelectionChanged="#init" text="Безопасность">
                <content>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -402,7 +402,7 @@
                                                 <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
                                              </VBox.margin>
                                           </Text>
-                                          <TextField fx:id="SecurityDeviceId" prefWidth="200.0">
+                                          <TextField fx:id="securityDeviceId" prefWidth="200.0">
                                              <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" />
                                              </VBox.margin>
@@ -415,12 +415,12 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Роль">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID роли">
                                              <VBox.margin>
                                                 <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
                                              </VBox.margin>
                                           </Text>
-                                          <TextField fx:id="SecurityRoleId" prefWidth="200.0">
+                                          <TextField fx:id="securityRoleId" prefWidth="200.0">
                                              <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" />
                                              </VBox.margin>
@@ -431,27 +431,51 @@
                               </HBox>
                               <HBox prefHeight="60.0">
                                  <children>
-                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#findUserBtnAction" text="Найти">
-                                       <HBox.margin>
-                                          <Insets bottom="20.0" left="148.0" right="20.0" top="10.0" />
-                                       </HBox.margin>
-                                    </Button>
+                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#findSecurityBtnAction" text="Найти">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="148.0" right="20.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                          <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#findSecurityAllDevicesBtnAction" text="Все устройства">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="85.0" right="20.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                          <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#findSecurityAllRolesBtnAction" text="Все роли">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="129.0" right="20.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0">
                            <children>
-                              <TableView fx:id="SecurityTable" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0">
+                              <TableView fx:id="securityTable" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0">
                                  <columns>
-                                    <TableColumn fx:id="userIdColumn1" minWidth="-Infinity" prefWidth="150.0" text="ID">
+                                    <TableColumn fx:id="securityRoleIdColumn" minWidth="-Infinity" prefWidth="75.0" text="ID">
                                        <cellValueFactory>
-                                          <PropertyValueFactory property="userId" />
+                                          <PropertyValueFactory property="RoleId" />
                                        </cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn fx:id="userRoleColumn1" prefWidth="175.0" text="Роль">
+                                    <TableColumn fx:id="securityRoleColumn" prefWidth="75.0" text="Роль">
                                        <cellValueFactory>
-                                          <PropertyValueFactory property="userRole" />
+                                          <PropertyValueFactory property="Role" />
+                                       </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="securityDeviceIdColumn" minWidth="-Infinity" prefWidth="75.0" text="ID">
+                                       <cellValueFactory>
+                                          <PropertyValueFactory property="DeviceId" />
+                                       </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="securityDeviceColumn" minWidth="-Infinity" prefWidth="100.0" text="Устройство">
+                                       <cellValueFactory>
+                                          <PropertyValueFactory property="Device" />
                                        </cellValueFactory>
                                     </TableColumn>
                                  </columns>
@@ -461,17 +485,17 @@
                               </TableView>
                               <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Создать Роль">
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addSecurityBtnAction" text="Создать Роль">
                                        <HBox.margin>
                                           <Insets bottom="10.0" right="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Изменить">
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#changeSecurityBtnAction" text="Изменить">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Удалить">
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteSecurityBtnAction" text="Удалить">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="20.0" />
                                        </HBox.margin>

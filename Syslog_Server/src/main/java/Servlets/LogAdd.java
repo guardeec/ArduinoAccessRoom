@@ -2,7 +2,7 @@ package Servlets;
 
 import DB_Object.Syslog;
 import JDBC.DAO;
-import String_Methods.Parsing;
+import methods.Parsing;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 
 /**
  * Created by Kolomeec on 28.04.2015.
