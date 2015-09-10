@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Access_Server/AccessServer.iml" filepath="$PROJECT_DIR$/Access_Server/AccessServer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Access_Server/Access_Server.iml" filepath="$PROJECT_DIR$/Access_Server/Access_Server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Admin_Client/Admin_Client.iml" filepath="$PROJECT_DIR$/Admin_Client/Admin_Client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Arduino.iml" filepath="$PROJECT_DIR$/Arduino.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Arduino_Client/Arduino_Client.iml" filepath="$PROJECT_DIR$/Arduino_Client/Arduino_Client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Syslog_Server/Syslog_Server.iml" filepath="$PROJECT_DIR$/Syslog_Server/Syslog_Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AccessServer/AccessServer.iml" filepath="$PROJECT_DIR$/AccessServer/AccessServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AccessServer/Access_Server.iml" filepath="$PROJECT_DIR$/AccessServer/Access_Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AdminClient/AdminClient.iml" filepath="$PROJECT_DIR$/AdminClient/AdminClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ArduinoAccessRoom.iml" filepath="$PROJECT_DIR$/ArduinoAccessRoom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ArduinoClient/ArduinoClient.iml" filepath="$PROJECT_DIR$/ArduinoClient/ArduinoClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SyslogServer/SyslogServer.iml" filepath="$PROJECT_DIR$/SyslogServer/SyslogServer.iml" />
     </modules>
   </component>
 </project>
