@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,11 +35,11 @@ public class getGuestCard extends HttpServlet {
         ArrayList<Map> message = new ArrayList<>();
         if(adminTable.get("guestAdmin")){
             String[] name = (String[]) reqMap.get("name");
-            String[] guestId = (String[]) reqMap.get("guestId");
+            String[] date = (String[]) reqMap.get("date");
             String[] cardId = (String[]) reqMap.get("cardId");
-            message = guestDB.get(  name[0],
-                                    !guestId[0].isEmpty() ? Integer.parseInt(guestId[0]) : null,
-                                    !cardId[0].isEmpty() ? Integer.parseInt(cardId[0]) : null);
+            message = guestDB.get(  name[0].isEmpty() ? null : name[0],
+                                    date[0].isEmpty() ? null : Date.valueOf(date[0]),
+                                    cardId[0].isEmpty() ? null : Integer.parseInt(cardId[0]));
         }else {
             Map<String, String> m = new HashMap<String, String>();
             m.put("message", "wrong pass");

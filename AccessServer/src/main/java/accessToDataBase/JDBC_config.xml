@@ -40,9 +40,9 @@
        <bean id="dataSourceDeviceAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
-              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/postgres" />
-              <property name="user" value="administrator" />
-              <property name="password" value="326787max" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/Access_DB_Server" />
+              <property name="user" value="technical_department" />
+              <property name="password" value="admin" />
               <!-- pool sizing -->
               <property name="initialPoolSize" value="3" />
               <property name="minPoolSize" value="6" />
@@ -67,9 +67,9 @@
        <bean id="dataSourceGuestCardAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
-              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/postgres" />
-              <property name="user" value="administrator" />
-              <property name="password" value="326787max" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/Access_DB_Server" />
+              <property name="user" value="reception_department" />
+              <property name="password" value="admin" />
               <!-- pool sizing -->
               <property name="initialPoolSize" value="3" />
               <property name="minPoolSize" value="6" />
@@ -94,9 +94,9 @@
        <bean id="dataSourceUserAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
-              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/postgres" />
-              <property name="user" value="administrator" />
-              <property name="password" value="326787max" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/Access_DB_Server" />
+              <property name="user" value="hr_department" />
+              <property name="password" value="admin" />
               <!-- pool sizing -->
               <property name="initialPoolSize" value="3" />
               <property name="minPoolSize" value="6" />
@@ -121,9 +121,9 @@
        <bean id="dataSourceSecurityAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
-              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/postgres" />
-              <property name="user" value="administrator" />
-              <property name="password" value="326787max" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/Access_DB_Server" />
+              <property name="user" value="security_department" />
+              <property name="password" value="admin" />
               <!-- pool sizing -->
               <property name="initialPoolSize" value="3" />
               <property name="minPoolSize" value="6" />
@@ -148,9 +148,9 @@
        <bean id="dataSourceAuthorisation" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
-              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/postgres" />
-              <property name="user" value="administrator" />
-              <property name="password" value="326787max" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/Access_DB_Server" />
+              <property name="user" value="arduino" />
+              <property name="password" value="arduino" />
               <!-- pool sizing -->
               <property name="initialPoolSize" value="3" />
               <property name="minPoolSize" value="6" />

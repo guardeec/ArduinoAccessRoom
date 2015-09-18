@@ -9,35 +9,32 @@ import javafx.scene.control.TextField;
 import java.util.Map;
 
 /**
- * Created by root on 15.07.15.
+ * Created by root on 18.09.15.
  */
-public class addRoleController {
+public class addCardController {
     @FXML
-    TextField addSecurityRole;
+    TextField addSecurityCardNumber;
 
     @FXML
-    public void addSecurityAddBtnAction(){
-        String name = addSecurityRole.getText();
+    public void addSecurityAddCardBtnAction(){
+        String number = addSecurityCardNumber.getText();
 
-        if (name.isEmpty()){
+        if (number.isEmpty()){
         }else {
             AdminType adminType = AdminType.getInstance();
             String adminName = adminType.getLogin();
             String adminPassword = adminType.getPassword();
             String message =    "adminName="+adminName
                     +"&adminPassword="+adminPassword
-                    +"&title="+name
+                    +"&cardNumber="+number
                     ;
-            Map<String, String> answer = httpRequest.makeInMap(message, URL.addRole);
+            Map<String, String> answer = httpRequest.makeInMap(message, URL.addCard);
             if (answer.get("message").contains("Success")){
-                SecurityController.addRoleStage.close();
+                SecurityController.addCardStage.close();
             }else {
-                addSecurityRole.setText("Ошибка сервера");
+                addSecurityCardNumber.setText("Ошибка сервера");
             }
 
         }
-
     }
-
-
 }

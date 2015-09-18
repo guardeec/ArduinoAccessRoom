@@ -30,20 +30,20 @@ public class changeDevice extends HttpServlet {
         String[] adminPassword = (String[]) reqMap.get("adminPassword");
 
         Map<String, Boolean> adminTable = authorisationDB.get(adminName[0], adminPassword[0]);
-        Map<String, String> message = null;
+        Map<String, String> message;
         if(adminTable.get("deviceAdmin")){
             String[] id = (String[]) reqMap.get("deviceId");
             String[] ip = (String[]) reqMap.get("ip");
             String[] specification = (String[]) reqMap.get("specification");
 
             message = devicesDB.change( Integer.parseInt(id[0]),
-                                        ip[0].isEmpty() ? ip[0] : null,
-                                        specification[0].isEmpty() ? specification[0] : null
+                                        specification[0],
+                                        ip[0]
             );
 
         }else {
             message = new HashMap<String, String>();
-            message.put("message", "wrong pass");
+            message.put("message", "Error - wrong pass");
         }
 
         PrintWriter out = response.getWriter();

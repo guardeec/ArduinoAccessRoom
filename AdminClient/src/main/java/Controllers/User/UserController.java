@@ -1,6 +1,9 @@
 package Controllers.User;
 
 import Controllers.GuestCard.GuestCardController;
+import Controllers.Methods.AdminType;
+import Controllers.Methods.URL;
+import Controllers.Methods.httpRequest;
 import POJO.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by root on 13.07.15.
@@ -38,13 +43,117 @@ public class UserController  extends GuestCardController {
 
     @FXML
     public void findUserBtnAction(){
-        ObservableList<User> users = FXCollections.observableArrayList(
-                new User("134", "Tom", "admin"),
-                new User("223", "Eva", "admin"),
-                new User("356", "Carl", "junior"),
-                new User("423", "Sam", "senior")
-        );
-        userTable.setItems(users);
+        AdminType adminType = AdminType.getInstance();
+        String adminName = adminType.getLogin();
+        String adminPassword = adminType.getPassword();
+        String id = userId.getText();
+        String name = userName.getText();
+        String roleId = userRole.getText();
+        String message =    "adminName="+adminName
+                +"&adminPassword="+adminPassword
+                +"&userId="+id
+                +"&name="+name
+                +"&roleId="+roleId
+                ;
+
+        List<Map> answer = httpRequest.makeInList(message, URL.getUser);
+        Map<String, String> result = answer.get(answer.size()-1);
+        if (result.get("message").contains("Success")){
+            ObservableList<User> users = FXCollections.observableArrayList();
+            for (int i=0; i<answer.size()-1; i++){
+                User user = new User(
+                        (String) answer.get(i).get("id"),
+                        (String) answer.get(i).get("name"),
+                        (String) answer.get(i).get("role")
+                );
+                users.add(user);
+            }
+            userTable.setItems(users);
+        }else {
+            ObservableList<User> users = FXCollections.observableArrayList();
+            for (int i=0; i<answer.size()-1; i++){
+                User user = new User(
+                        "Ошибка сервера",
+                        "Ошибка сервера",
+                        "Ошибка сервера"
+                );
+                users.add(user);
+            }
+            userTable.setItems(users);
+        }
+
+    }
+
+    @FXML
+    public void findUserRolesBtnAction(){
+        AdminType adminType = AdminType.getInstance();
+        String adminName = adminType.getLogin();
+        String adminPassword = adminType.getPassword();
+        String message =    "adminName="+adminName
+                +"&adminPassword="+adminPassword
+                ;
+        List<Map> answer = httpRequest.makeInList(message, URL.getUserRoles);
+        Map<String, String> result = answer.get(answer.size() - 1);
+        if (result.get("message").contains("Success")){
+            ObservableList<User> roles = FXCollections.observableArrayList();
+            for (int i=0; i<answer.size(); i++){
+                User user = new User(
+                        null,
+                        (String) answer.get(i).get("title"),
+                        (String) answer.get(i).get("id")
+                );
+                roles.add(user);
+            }
+            userTable.setItems(roles);
+        }else {
+            ObservableList<User> users = FXCollections.observableArrayList();
+            for (int i=0; i<answer.size()-1; i++){
+                User user = new User(
+                        "Ошибка сервера",
+                        "Ошибка сервера",
+                        "Ошибка сервера"
+                );
+                users.add(user);
+            }
+            userTable.setItems(users);
+        }
+
+    }
+
+    @FXML
+    public void findFreeUserCardsBtnAction(){
+        AdminType adminType = AdminType.getInstance();
+        String adminName = adminType.getLogin();
+        String adminPassword = adminType.getPassword();
+        String message =    "adminName="+adminName
+                            +"&adminPassword="+adminPassword
+                ;
+        List<Map> answer = httpRequest.makeInList(message, URL.getFreeUserCards);
+        Map<String, String> result = answer.get(answer.size() - 1);
+        if (result.get("message").contains("Success")){
+            ObservableList<User> freeCards = FXCollections.observableArrayList();
+            for (int i=0; i<answer.size(); i++){
+                User user = new User(
+                        (String) answer.get(i).get("id"),
+                        null,
+                        null
+                );
+                freeCards.add(user);
+            }
+            userTable.setItems(freeCards);
+        }else {
+            ObservableList<User> users = FXCollections.observableArrayList();
+            for (int i=0; i<answer.size()-1; i++){
+                User user = new User(
+                        "Ошибка сервера",
+                        "Ошибка сервера",
+                        "Ошибка сервера"
+                );
+                users.add(user);
+            }
+            userTable.setItems(users);
+        }
+
     }
 
     @FXML

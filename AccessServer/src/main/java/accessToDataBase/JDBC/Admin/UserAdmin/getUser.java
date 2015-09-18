@@ -15,12 +15,12 @@ import java.util.Map;
  */
 public class getUser extends JdbcDaoSupport implements getUserImpl {
     @Override
-    public ArrayList<Map> get(Integer userId, String name) {
+    public ArrayList<Map> get(Integer userId, String name, Integer roleId) {
         ArrayList<Map> message;
         try{
             message = (ArrayList<Map>) getJdbcTemplate().queryForObject(
-                    "SELECT * FROM users WHERE id = coalesce(?,id) AND name = coalesce(?,name);",
-                    new Object[]{userId, name},
+                    "SELECT user_id, name, user_role_id FROM users JOIN users_and_user_roles ON id = user_id WHERE id = coalesce(?,id) AND name = coalesce(?,name) AND user_role_id = coalesce(?, user_role_id);",
+                    new Object[]{userId, name, roleId},
                     new SearchRowMapper()
             );
         }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
@@ -39,8 +39,9 @@ public class getUser extends JdbcDaoSupport implements getUserImpl {
 
             do {
                 Map<String, String> messageComponent = new HashMap<>();
-                messageComponent.put("id", Integer.toString(resultSet.getInt("id")));
+                messageComponent.put("id", Integer.toString(resultSet.getInt("user_id")));
                 messageComponent.put("name", resultSet.getString("name"));
+                messageComponent.put("role", Integer.toString(resultSet.getInt("user_role_id")));
                 message.add(messageComponent);
             }while (resultSet.next());
 

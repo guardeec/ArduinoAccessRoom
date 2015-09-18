@@ -35,7 +35,7 @@ public class addDevice extends HttpServlet {
             String[] ip = (String[]) reqMap.get("ip");
             String[] specification = (String[]) reqMap.get("specification");
 
-            message = devicesDB.add(ip[0], specification[0]);
+            message = devicesDB.add(specification[0], ip[0]);
 
         }else {
             message = new HashMap<String, String>();

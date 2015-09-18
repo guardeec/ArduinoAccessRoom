@@ -7,18 +7,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" opacity="1.0" prefHeight="150.0" prefWidth="300.0" rotate="0.0" visible="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Security.changeRoleController">
+<AnchorPane id="AnchorPane" opacity="1.0" prefHeight="70.0" prefWidth="300.0" rotate="0.0" visible="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Security.changeRoleController">
    <children>
       <VBox layoutX="121.0" prefHeight="280.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID устройства">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID роли">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="changeSecurityId" prefWidth="200.0">
+                  <TextField fx:id="changeSecurityRoleId" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
                      </VBox.margin>
@@ -27,47 +27,30 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID роли">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Название роли">
                      <VBox.margin>
-                        <Insets left="10.0" right="10.0" />
+                        <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="changeSecurityRole" prefWidth="200.0">
+                  <TextField fx:id="changeSecurityRoleTitle" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
                      </VBox.margin>
                   </TextField>
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Доступ:">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </VBox.margin>
-                  </Text>
-                  <Text fx:id="changeSecurityStatus" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Text>
                </children>
             </VBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="changeSecurityChangeBtnAction" alignment="CENTER" mnemonicParsing="false" onAction="#changeSecurityChangeBtnAction" text="Изменить">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#changeSecurityChangeBtnAction" text="Добавить">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="changeSecurityFindBtnAction" alignment="CENTER" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#changeSecurityFindBtnAction" text="Найти">
+                  <Text fx:id="addDeviceMessage" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
                      <HBox.margin>
-                        <Insets bottom="10.0" left="125.0" right="10.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
-                  </Button>
+                  </Text>
                </children>
             </HBox>
          </children>

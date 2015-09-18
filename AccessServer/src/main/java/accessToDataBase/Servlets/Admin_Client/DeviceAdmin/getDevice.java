@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,26 +32,27 @@ public class getDevice extends HttpServlet {
         String[] adminPassword = (String[]) reqMap.get("adminPassword");
 
         Map<String, Boolean> adminTable = authorisationDB.get(adminName[0], adminPassword[0]);
-        ArrayList<Map> message = new ArrayList<>();
+        List<Map<String, String>> message/* = new ArrayList<>()*/;
         if(adminTable.get("deviceAdmin")){
             String[] id = (String[]) reqMap.get("deviceId");
             String[] specification = (String[]) reqMap.get("specification");
             String[] ip = (String[]) reqMap.get("ip");
 
-            message = devicesDB.get(    Integer.parseInt(id[0]),
-                                        specification[0].isEmpty() ? specification[0] : null ,
-                                        ip[0].isEmpty() ? ip[0] : null
+            message = devicesDB.get(    id[0].isEmpty() ? null : Integer.parseInt(id[0]),
+                                        specification[0].isEmpty() ? null : specification[0] ,
+                                        ip[0].isEmpty() ? null : ip[0]
             );
 
         }else {
+            message = new ArrayList<>();
             Map<String, String> m = new HashMap<String, String>();
             m.put("message", "wrong pass");
             message.add(m);
         }
 
         PrintWriter out = response.getWriter();
-        for(Map a :message){
-            out.println(a.entrySet());
+        for(int i=0; i<message.size(); i++){
+            out.println(message.get(i).entrySet());
         }
     }
 }

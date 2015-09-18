@@ -17,24 +17,16 @@ public class changeRole extends JdbcDaoSupport implements changeRoleImpl {
         Map<String, String> message = null;
 
         try{
-            message = (Map<String, String>) getJdbcTemplate().queryForObject(
+            getJdbcTemplate().update(
                     "UPDATE roles SET title = ? WHERE id = ?;",
-                    new Object[]{role, roleId},
-                    new SearchRowMapper()
+                    new Object[]{role, roleId}
             );
+            message = new HashMap<>();
+            message.put("message", "Success when changing Roles");
         }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new HashMap<>();
             message.put("message", "Error when changing Roles");
         }
         return message;
-    }
-
-    private class SearchRowMapper implements RowMapper {
-        @Override
-        public Object mapRow(ResultSet resultSet, int i) throws SQLException {
-            Map <String, String> searchStrokeResult = new HashMap<>();
-            searchStrokeResult.put("message","Success Roles adding");
-            return searchStrokeResult;
-        }
     }
 }

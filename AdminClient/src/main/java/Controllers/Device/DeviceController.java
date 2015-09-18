@@ -1,6 +1,8 @@
 package Controllers.Device;
 
 import Controllers.Methods.AdminType;
+import Controllers.Methods.URL;
+import Controllers.Methods.httpRequest;
 import POJO.Device;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +16,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -40,14 +45,45 @@ public class DeviceController {
 
     @FXML
     public void deviceFindBtnAction(){
-        ObservableList<Device> devices = FXCollections.observableArrayList(
-                new Device("1","1st Door", "146.323.43.23"),
-                new Device("2","3st Door", "142.323.43.23"),
-                new Device("3","4st Door", "156.323.43.23"),
-                new Device("4", "5", "124.323.13.23")
-        );
 
-        deviceTable.setItems(devices);
+        AdminType adminType = AdminType.getInstance();
+        String adminName = adminType.getLogin();
+        String adminPassword = adminType.getPassword();
+        String ip = deviceIp.getText();
+        String specification = deviceSpecification.getText();
+        String id = deviceId.getText();
+        String message =    "adminName="+adminName
+                +"&adminPassword="+adminPassword
+                +"&ip="+ip
+                +"&specification="+specification
+                +"&deviceId="+id
+                ;
+
+        List<Map> answer = httpRequest.makeInList(message, URL.getDevice);
+        Map<String, String> result = answer.get(answer.size()-1);
+        if (result.get("message").contains("Success")){
+            ObservableList<Device> devices = FXCollections.observableArrayList();
+            for (int i=0; i<answer.size()-1; i++) {
+                Device device = new Device(
+                        (String) answer.get(i).get("id"),
+                        (String) answer.get(i).get("specification"),
+                        (String) answer.get(i).get("ip")
+                );
+                devices.add(device);
+            }
+            deviceTable.setItems(devices);
+        }else {
+            ObservableList<Device> devices = FXCollections.observableArrayList();
+
+            Device device = new Device(
+                    "Ошибка Сервера",
+                    "Ошибка сервера",
+                    "Ошибка Сервера"
+            );
+            devices.add(device);
+            deviceTable.setItems(devices);
+        }
+
     }
 
     @FXML

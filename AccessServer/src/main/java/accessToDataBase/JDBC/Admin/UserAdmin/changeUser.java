@@ -17,39 +17,30 @@ public class changeUser extends JdbcDaoSupport implements changeUserImpl {
         Map<String, String> message = null;
         if(name != null){
             try{
-                message = (Map<String, String>) getJdbcTemplate().queryForObject(
+                getJdbcTemplate().update(
                         "UPDATE users SET name = ? WHERE id = ?;",
-                        new Object[]{name, id},
-                        new SearchRowMapper()
+                        new Object[]{name, id}
                 );
+                message = new HashMap<>();
+                message.put("message", "Success when changing user");
             }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
                 message = new HashMap<>();
-                message.put("id", null);
                 message.put("message", "Error when changing user");
             }
         }
         if (roleId != null){
             try{
-                message = (Map<String, String>) getJdbcTemplate().queryForObject(
-                        "UPDATE users_and_roles SET role_id = ? WHERE user_id = ?;",
-                        new Object[]{roleId, id},
-                        new SearchRowMapper()
+                getJdbcTemplate().update(
+                        "UPDATE users_and_user_roles SET user_role_id = ? WHERE user_id = ?;",
+                        new Object[]{roleId, id}
                 );
+                message = new HashMap<>();
+                message.put("message", "Success when changing user");
             }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
                 message = new HashMap<>();
-                message.put("id", null);
                 message.put("message", "Error when changing user");
             }
         }
         return message;
-    }
-
-    private class SearchRowMapper implements RowMapper {
-        @Override
-        public Object mapRow(ResultSet resultSet, int i) throws SQLException {
-            Map <String, String> searchStrokeResult = new HashMap<>();
-            searchStrokeResult.put("message","Success user changing");
-            return searchStrokeResult;
-        }
     }
 }

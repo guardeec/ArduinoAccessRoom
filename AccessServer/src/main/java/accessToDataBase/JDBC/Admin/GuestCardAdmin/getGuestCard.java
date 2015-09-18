@@ -3,6 +3,7 @@ package accessToDataBase.JDBC.Admin.GuestCardAdmin;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,12 +15,12 @@ import java.util.Map;
  */
 public class getGuestCard extends JdbcDaoSupport implements getGuestCardImpl {
     @Override
-    public ArrayList<Map> get(String name, Integer guestId, Integer cardId) {
+    public ArrayList<Map> get(String name, Date date, Integer cardId) {
         ArrayList<Map> message;
         try{
             message = (ArrayList<Map>) getJdbcTemplate().queryForObject(
-                    "SQL",
-                    new Object[]{name, guestId, cardId},
+                    "SELECT * FROM guests WHERE name = coalesce(?,name) AND date = coalesce(?, date) AND id = coalesce((SELECT guest_id FROM guests_and_cards WHERE card_id = ?) ,id);",
+                    new Object[]{name, date, cardId},
                     new SearchRowMapper()
             );
         }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
@@ -38,9 +39,12 @@ public class getGuestCard extends JdbcDaoSupport implements getGuestCardImpl {
 
             do {
                 Map<String, String> messageComponent = new HashMap<>();
+                messageComponent.put("id", Integer.toString(resultSet.getInt("id")));
                 messageComponent.put("name", resultSet.getString("name"));
-                messageComponent.put("guestId", Integer.toString(resultSet.getInt("guestId")));
-                messageComponent.put("cardId", Integer.toString(resultSet.getInt("cardId")));
+                messageComponent.put("time_start", resultSet.getTime("time_start").toString());
+                messageComponent.put("time_end", resultSet.getTime("time_end").toString());
+                messageComponent.put("date", resultSet.getDate("date").toString());
+
                 message.add(messageComponent);
             }while (resultSet.next());
 

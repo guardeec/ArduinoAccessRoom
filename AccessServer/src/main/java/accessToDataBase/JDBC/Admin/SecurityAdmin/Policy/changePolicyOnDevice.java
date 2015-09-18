@@ -14,26 +14,18 @@ import java.util.Map;
 public class changePolicyOnDevice extends JdbcDaoSupport implements changePolicyOnDeviceImpl {
     @Override
     public Map<String, String> change(Integer deviceId, Integer roleId, Boolean access) {
-        Map<String, String> message = null;
+        Map<String, String> message;
         try{
-            message = (Map<String, String>) getJdbcTemplate().queryForObject(
+           getJdbcTemplate().update(
                     "UPDATE access_rights SET access = ? WHERE role_id = ? AND device_id = ?;",
-                    new Object[]{access, roleId, deviceId},
-                    new SearchRowMapper()
+                    new Object[]{access, roleId, deviceId}
             );
+            message = new HashMap<>();
+            message.put("message","Success changing Devices`s Polices");
         }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new HashMap<>();
             message.put("message", "Error when changing Devices`s Polices");
         }
         return message;
-    }
-
-    private class SearchRowMapper implements RowMapper {
-        @Override
-        public Object mapRow(ResultSet resultSet, int i) throws SQLException {
-            Map <String, String> searchStrokeResult = new HashMap<>();
-            searchStrokeResult.put("message","Success changing Devices`s Polices");
-            return searchStrokeResult;
-        }
     }
 }

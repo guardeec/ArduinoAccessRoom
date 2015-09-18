@@ -1,53 +1,49 @@
 package Controllers.GuestCard;
 
+import Controllers.Methods.AdminType;
+import Controllers.Methods.URL;
+import Controllers.Methods.httpRequest;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by root on 15.07.15.
  */
 public class changeGuestCardController {
     @FXML
-    private TextField changeGuestCardNumber;
+    private TextField changeGuestName;
     @FXML
-    private TextField changeGuestCardName;
-    @FXML
-    private MenuButton changeGuestCardStatus;
-
-    @FXML
-    public void changeGuestCardStatusActiveBtnAction(){
-        changeGuestCardStatus.setText("Активна");
-    }
-    @FXML
-    public void changeGuestCardStatusDisactiveBtnAction(){
-        changeGuestCardStatus.setText("Неактивна");
-    }
-    @FXML
-    public void changeGuestCardStatusUnknownBtnAction(){
-        changeGuestCardStatus.setText("Неизвестно");
-    }
+    private TextField changeGuestId;
 
     @FXML
     public void changeGuestCardChangeBtnAction(){
-        String number = changeGuestCardNumber.getText();
-        String status;
-        String name;
-        if(number.isEmpty()){
+        String name = changeGuestName.getText();
+        String id = changeGuestId.getText();
+        if(name.isEmpty() || id.isEmpty()){
         }else {
-            //http
-            GuestCardController.changeStage.close();
+            AdminType adminType = AdminType.getInstance();
+            String adminName = adminType.getLogin();
+            String adminPassword = adminType.getPassword();
+            String message =    "adminName="+adminName
+                    +"&adminPassword="+adminPassword
+                    +"&id="+id
+                    +"&name="+name
+                    ;
+            List<Map> result = httpRequest.makeInList(message, URL.changeGuest);
+            Map<String, String> answer = result.get(result.size()-1);
+            if (answer.get("message").contains("Success")){
+                GuestCardController.changeStage.close();
+            }else {
+                changeGuestName.setText("Ошибка сервера");
+                changeGuestId.setText("Ошибка сервера");
+            }
+
         }
     }
 
-    @FXML
-    public void changeGuestCardFindBtnAction(){
-        String number = changeGuestCardNumber.getText();
-        if(number.isEmpty()){
-        }else {
-            //http
-        }
-    }
 }

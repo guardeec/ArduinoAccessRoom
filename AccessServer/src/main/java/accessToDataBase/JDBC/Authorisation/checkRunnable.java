@@ -24,6 +24,9 @@ public class checkRunnable extends JdbcDaoSupport implements checkRunnableImpl {
         }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new HashMap<>();
             message.put("DB", false);
+        }catch (org.springframework.jdbc.BadSqlGrammarException ex){
+            message = new HashMap<>();
+            message.put("DB", true);
         }
         return message;
     }

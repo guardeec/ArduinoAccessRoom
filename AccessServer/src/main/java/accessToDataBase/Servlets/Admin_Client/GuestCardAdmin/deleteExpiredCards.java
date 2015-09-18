@@ -38,6 +38,6 @@ public class deleteExpiredCards extends HttpServlet {
         }
 
         PrintWriter out = response.getWriter();
-        out.println(message.entrySet());
+        //out.println(message.entrySet());
     }
 }

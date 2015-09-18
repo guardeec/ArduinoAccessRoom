@@ -9,6 +9,8 @@ import java.util.Map;
 public class AdminType {
 
     private Map<String, String> adminType = new HashMap<String, String>();
+    private String login;
+    private String password;
 
     private static AdminType ourInstance = new AdminType();
 
@@ -25,5 +27,21 @@ public class AdminType {
 
     public Map<String, String> get(){
         return adminType;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -33,17 +33,12 @@ public class changeGuestCard extends HttpServlet {
         Map<String, Boolean> adminTable = authorisationDB.get(adminName[0], adminPassword[0]);
         Map<String, String> message = null;
         if(adminTable.get("guestAdmin")) {
-            String[] id = (String[]) reqMap.get("cardId");
+            String[] id = (String[]) reqMap.get("id");
             String[] name = (String[]) reqMap.get("name");
-            String[] startTime = (String[]) reqMap.get("startTime");
-            String[] endTime = (String[]) reqMap.get("endTime");
-            String[] date = (String[]) reqMap.get("date");
 
             message = guestDB.change(   Integer.parseInt(id[0]),
-                                        !name[0].isEmpty() ? name[0] : null,
-                                        !startTime[0].isEmpty() ? Time.valueOf(startTime[0]) : null,
-                                        !endTime[0].isEmpty() ? Time.valueOf(endTime[0]) : null,
-                                        !date[0].isEmpty() ? java.sql.Date.valueOf(date[0]) : null);
+                                        name[0]
+            );
         }else {
             message = new HashMap<>();
             message.put("message", "wrong pass");

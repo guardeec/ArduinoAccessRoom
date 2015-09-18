@@ -16,24 +16,16 @@ public class deleteRole extends JdbcDaoSupport implements deleteRoleImpl {
     public Map<String, String> delete(Integer roleId) {
         Map<String, String> message;
         try{
-            message = (Map<String, String>) getJdbcTemplate().queryForObject(
+            getJdbcTemplate().update(
                     "DELETE FROM roles WHERE id = ?;",
-                    new Object[]{roleId},
-                    new SearchRowMapper()
+                    new Object[]{roleId}
             );
+            message = new HashMap<>();
+            message.put("message", "Success when deleting Roles");
         }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new HashMap<>();
             message.put("message", "Error when deleting Roles");
         }
         return message;
-    }
-
-    private class SearchRowMapper implements RowMapper {
-        @Override
-        public Object mapRow(ResultSet resultSet, int i) throws SQLException {
-            Map <String, String> searchStrokeResult = new HashMap<>();
-            searchStrokeResult.put("message","Success Roles deleting");
-            return searchStrokeResult;
-        }
     }
 }

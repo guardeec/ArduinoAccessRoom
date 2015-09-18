@@ -37,7 +37,7 @@ public class getAccess extends JdbcDaoSupport implements getAccessImpl {
             Map<String, String> message = new HashMap<>();
             message.put("id", Integer.toString(rs.getInt("id")));
             message.put("name", rs.getString("name"));
-            message.put("getAccess", Boolean.toString(rs.getBoolean("getAccess")));
+            message.put("access", Boolean.toString(rs.getBoolean("access")));
             message.put("type", "user");
             return message;
         }
@@ -48,7 +48,7 @@ public class getAccess extends JdbcDaoSupport implements getAccessImpl {
             Map<String, String> message = new HashMap<>();
             message.put("id", Integer.toString(rs.getInt("id")));
             message.put("name", rs.getString("name"));
-            message.put("getAccess", Boolean.toString(rs.getBoolean("getAccess")));
+            message.put("access", Boolean.toString(rs.getBoolean("access")));
             message.put("type", "guest");
             return message;
         }
@@ -126,7 +126,7 @@ public class getAccess extends JdbcDaoSupport implements getAccessImpl {
         if (!indefiniteUser && !indefiniteGuest){
             message.put("id", "UNKNOWN");
             message.put("name", "UNKNOWN");
-            message.put("getAccess", "false");
+            message.put("access", "false");
             message.put("Roles", "UNKNOWN");
         }
 

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="AccessServer archive">
+    <output-path>$PROJECT_DIR$/out/artifacts/AccessServer_archive</output-path>
+    <root id="archive" name="AccessServer archive.war">
+      <element id="artifact" artifact-name="AccessServer" />
+    </root>
+  </artifact>
+</component>

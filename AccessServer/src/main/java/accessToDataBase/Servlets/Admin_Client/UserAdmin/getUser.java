@@ -35,8 +35,10 @@ public class getUser extends HttpServlet {
         if(adminTable.get("userAdmin")){
             String[] id = (String[]) reqMap.get("userId");
             String[] name = (String[]) reqMap.get("name");
-            message = userDB.get(   id[0].isEmpty() ? Integer.parseInt(id[0]) : null,
-                                    name[0].isEmpty() ? name[0] : null
+            String[] roleId = (String[]) reqMap.get("roleId");
+            message = userDB.get(   id[0].isEmpty() ? null : Integer.parseInt(id[0]),
+                                    name[0].isEmpty() ? null : name[0],
+                                    roleId[0].isEmpty() ? null : Integer.parseInt(roleId[0])
             );
         }else {
             Map<String, String> m = new HashMap<String, String>();

@@ -14,27 +14,19 @@ import java.util.Map;
 public class changeCard extends JdbcDaoSupport implements changeCardImpl {
     @Override
     public Map<String, String> change(Integer id, String card) {
-        Map<String, String> message = null;
+        Map<String, String> message;
 
         try{
-            message = (Map<String, String>) getJdbcTemplate().queryForObject(
+            getJdbcTemplate().update(
                     "UPDATE cards SET number = ? WHERE id = ?;",
-                    new Object[]{id, card},
-                    new SearchRowMapper()
+                    new Object[]{id, card}
             );
+            message = new HashMap<>();
+            message.put("message", "Success when changing card");
         }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new HashMap<>();
             message.put("message", "Error when changing card");
         }
         return message;
-    }
-
-    private class SearchRowMapper implements RowMapper {
-        @Override
-        public Object mapRow(ResultSet resultSet, int i) throws SQLException {
-            Map <String, String> searchStrokeResult = new HashMap<>();
-            searchStrokeResult.put("message","Success card adding");
-            return searchStrokeResult;
-        }
     }
 }

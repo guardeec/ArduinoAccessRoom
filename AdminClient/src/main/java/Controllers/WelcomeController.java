@@ -47,6 +47,8 @@ public class WelcomeController {
             if(!Boolean.parseBoolean(enter.get("deviceAdmin"))){
                 welcomeMessage.setText("Пользователь не найден");
             }else {
+                adminType.setLogin(name);
+                adminType.setPassword(pass);
                 FXMLLoader loader = new FXMLLoader();
                 Parent root = null;
                 try {

@@ -16,24 +16,16 @@ public class deleteDevice extends JdbcDaoSupport implements deleteDeviceImpl {
     public Map<String, String> delete(Integer id) {
         Map<String, String> message;
         try{
-            message = (Map<String, String>) getJdbcTemplate().queryForObject(
+                    getJdbcTemplate().update(
                     "DELETE FROM devices WHERE id = ?;",
-                    new Object[]{id},
-                    new SearchRowMapper()
+                    new Object[]{id}
             );
+            message = new HashMap<>();
+            message.put("message", "Success when deleting Devices");
         }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new HashMap<>();
             message.put("message", "Error when deleting Devices");
         }
         return message;
-    }
-
-    private class SearchRowMapper implements RowMapper {
-        @Override
-        public Object mapRow(ResultSet resultSet, int i) throws SQLException {
-            Map <String, String> searchStrokeResult = new HashMap<>();
-            searchStrokeResult.put("message","Success Devices delete");
-            return searchStrokeResult;
-        }
     }
 }
