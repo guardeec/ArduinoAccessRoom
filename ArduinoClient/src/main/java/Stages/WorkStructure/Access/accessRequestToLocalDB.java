@@ -23,12 +23,13 @@ public class accessRequestToLocalDB {
             try {
                 fis = new FileInputStream(new File(initialisation.adminDBFile));
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                adminDB = (ArrayList) ois.readObject();
+                adminDB = (ArrayList<Map>) ois.readObject();
                 ois.close();
                 fis.close();
 
-                for (Map<String, String> admin : adminDB){
-                    if (admin.get("card").compareTo(input.get("card"))==0){
+                for (int i=0; i<adminDB.size()-1; i++){
+                    Map<String, String> admin = adminDB.get(i);
+                    if (admin.get("number").compareTo(input.get("card"))==0){
                         output = new HashMap<String, String>();
                         output.put("name", admin.get("name"));
                         output.put("id", admin.get("id"));

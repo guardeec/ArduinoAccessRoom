@@ -18,7 +18,7 @@ public class cashAdminDB extends JdbcDaoSupport implements cashAdminDBImpl {
         ArrayList<Map> message;
         try{
             message = (ArrayList<Map>) getJdbcTemplate().queryForObject(
-                    "SELECT users.id, users.name, cards.number FROM users JOIN users_and_cards ON users.id = users_and_cards.user_id JOIN cards ON cards.id = users_and_cards.card_id JOIN users_and_roles ON users.id = users_and_roles.user_id JOIN roles ON users_and_roles.role_id = roles.id JOIN access_rights ON roles.id = access_rights.role_id WHERE access_rights.role_id = 3 AND device_id = ?;",
+                    "SELECT employees.id, employees.name, cards.number FROM employees JOIN employees_and_cards ON employees.id = employees_and_cards.employee_id JOIN cards ON cards.id = employees_and_cards.card_id JOIN employees_and_roles ON employees.id = employees_and_roles.employee_id JOIN system_roles ON employees_and_roles.system_role_id = system_roles.id JOIN access_rights ON system_roles.id = access_rights.system_role_id WHERE employee_status_id = 1 AND access_rights.system_role_id = 3 AND device_id = ?;",
                     new Object[]{deviceId},
                     new SearchRowMapper()
             );

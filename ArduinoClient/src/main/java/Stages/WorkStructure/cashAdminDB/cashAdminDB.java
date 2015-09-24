@@ -22,6 +22,7 @@ public class cashAdminDB extends Thread {
 
                 //делаем запрос
                 List<Map> output = cashAdminDBRequest.make(httpAddress);
+                System.out.println("Cashing AdminDB");
                 //в ответе есть сообщение, которое говорит получили ли мы БД админов
                 //посмотрим его, перед тем как удалять старую БД
                 boolean requestStatus = false;
@@ -41,13 +42,15 @@ public class cashAdminDB extends Thread {
                         OOStream.writeObject(output);
                         OOStream.close();
                         FOStream.close();
+                        System.out.println("Cashing AdminDB Success");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 } else {
                     connectionStatus.setNoConnection();
+                    System.out.println("Cashing AdminDB Error: No server connection");
                 }
-                Thread.sleep(3600000);
+                Thread.sleep(20000);
             }
         } catch (InterruptedException e) {
         }

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AccessServer/AccessServer.iml" filepath="$PROJECT_DIR$/AccessServer/AccessServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AccessServer/Access_Server.iml" filepath="$PROJECT_DIR$/AccessServer/Access_Server.iml" />
       <module fileurl="file://$PROJECT_DIR$/AdminClient/AdminClient.iml" filepath="$PROJECT_DIR$/AdminClient/AdminClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/ArduinoAccessRoom.iml" filepath="$PROJECT_DIR$/ArduinoAccessRoom.iml" />
       <module fileurl="file://$PROJECT_DIR$/ArduinoClient/ArduinoClient.iml" filepath="$PROJECT_DIR$/ArduinoClient/ArduinoClient.iml" />

@@ -1,5 +1,6 @@
 package Stages.WorkStructure.cashAdminDB;
 
+import Stages.InitializationStructure.initialisation;
 import Stages.Methods.HttpParse;
 
 import java.io.IOException;
@@ -35,7 +36,7 @@ public class cashAdminDBRequest {
     public static List<Map> make(String httpAddress){
         List<Map> output;
         try {
-            URLConnection conn = new URL( "http://"+httpAddress).openConnection();
+            URLConnection conn = new URL( "http://"+httpAddress+"?device_id="+ initialisation.deviceId).openConnection();
             String message = readStreamToString(conn.getInputStream(), "UTF-8");
             output = HttpParse.parseHttp2ArrayList(message);
         } catch (IOException e) {

@@ -1,7 +1,8 @@
-localhost:8080/Access
-localhost:8080/checkRunnable
-localhost:8080/Access
+192.168.1.248:55431/AccessServer%20archive/getAccess
+192.168.1.248:55431/AccessServer%20archive/checkRunnable
+192.168.1.248:55431/AccessServer%20archive/cashAdminDB
 read.txt
 write.txt
 runnable.txt
-a.txt
+adminDB.txt
+1

@@ -14,6 +14,7 @@ public class initialisation {
     public static String outputFile;
     public static String checkRunnableFile;
     public static String adminDBFile;
+    public static String deviceId;
 
     public static void start() {
 
@@ -27,6 +28,7 @@ public class initialisation {
             outputFile = configuration[4];
             checkRunnableFile = configuration[5];
             adminDBFile = configuration[6];
+            deviceId = configuration[7];
 
             File files[] = {    new File(inputFile),
                                 new File(outputFile),
@@ -35,7 +37,7 @@ public class initialisation {
             };
 
             //make files if they are not exist
-            makeFiles.start(files);
+            //makeFiles.start(files);
         }else {
             System.exit(0);
         }
