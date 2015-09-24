@@ -33,8 +33,10 @@ public class URL {
     public static final String deleteRole   = url + "securityAdmin/deleteRole";
     public static final String getSecurityRoles= url + "securityAdmin/getRole";
     public static final String getSecurityDevices= url + "securityAdmin/getDevice";
-    public static final String getSecurityPermission= url + "securityAdmin/getPolicyOnDevice";
+    public static final String getSecurityPermission= url + "securityAdmin/getPolicy";
     public static final String changeSecurityPermission=url + "securityAdmin/changePolicyOnDevice";
+
+    public static final String getAccounts=url + " ";
 
 
 }

@@ -57,10 +57,11 @@ public class deleteUserController {
                     +"&name="
                     +"&roleId="
                     ;
-            Map<String, String> answer = httpRequest.makeInMap(message, URL.getUser);
-            if (answer.get("message").contains("Success")){
-                deleteUserName.setText(answer.get("name"));
-                deleteUserRole.setText(answer.get("role"));
+            List<Map> answer = httpRequest.makeInList(message, URL.getUser);
+            Map<String, String> result = answer.get(answer.size() - 1);
+            if (result.get("message").contains("Success")){
+                deleteUserName.setText((String)answer.get(0).get("name"));
+                deleteUserRole.setText((String)answer.get(0).get("role"));
             }else {
                 deleteUserId.setText("Ошибка Сервера");
                 deleteUserName.setText("Ошибка Сервера");

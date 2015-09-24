@@ -47,21 +47,32 @@ public class SecurityController extends UserController {
         String deviceId = securityDeviceId.getText();
         String roleId = securityRoleId.getText();
         String message =    "adminName="+adminName
-                            +"&adminPassword="+adminPassword
-                            +"&deviceId="+deviceId
-                            +"&roleId"+roleId
+                +"&adminPassword="+adminPassword
+                +"&deviceId="+deviceId
+                +"&roleId="+roleId
                 ;
         List<Map> answer = httpRequest.makeInList(message, URL.getSecurityPermission);
         Map<String, String> result = answer.get(answer.size() - 1);
+        message =    "adminName="+adminName
+                + "&adminPassword=" + adminPassword
+                +"&ip="
+                +"&specification="
+                + "&deviceId="
+        ;
         List<Map> devices = httpRequest.makeInList(message, URL.getSecurityDevices);
-        Map<String, String> resultDevices = devices.get(answer.size() - 1);
+        Map<String, String> resultDevices = devices.get(devices.size() - 1);
+        message =    "adminName="+adminName
+                +"&adminPassword="+adminPassword
+                +"&roleId="
+                +"&title="
+        ;
         List<Map> roles = httpRequest.makeInList(message, URL.getSecurityRoles);
-        Map<String, String> resultRoles = roles.get(answer.size() - 1);
+        Map<String, String> resultRoles = roles.get(roles.size() - 1);
         if (result.get("message").contains("Success") && resultDevices.get("message").contains("Success") && resultRoles.get("message").contains("Success")){
             ObservableList<Security> polices = FXCollections.observableArrayList();
             for (int i=0; i<answer.size()-1; i++){
-                String access = (String) answer.get(i).get("getAccess");
-                if (access.contains("true")){
+                String access = (String) answer.get(i).get("access");
+                if (access.contains("t")){
                     String deviceSpecification = null;
                     for (int q=0; q<devices.size()-1; q++){
                         deviceId = (String) devices.get(q).get("id");
@@ -97,6 +108,8 @@ public class SecurityController extends UserController {
             polices.add(security);
             securityTable.setItems(polices);
         }
+
+
     }
 
     @FXML
@@ -106,6 +119,9 @@ public class SecurityController extends UserController {
         String adminPassword = adminType.getPassword();
         String message =    "adminName="+adminName
                             +"&adminPassword="+adminPassword
+                            +"&ip="
+                            +"&specification="
+                            + "&deviceId="
                 ;
         List<Map> devices = httpRequest.makeInList(message, URL.getSecurityDevices);
         Map<String, String> resultDevices = devices.get(devices.size() - 1);
@@ -142,6 +158,8 @@ public class SecurityController extends UserController {
         String adminPassword = adminType.getPassword();
         String message =    "adminName="+adminName
                             +"&adminPassword="+adminPassword
+                            +"&roleId="
+                            +"&title="
                 ;
         List<Map> roles = httpRequest.makeInList(message, URL.getSecurityRoles);
         Map<String, String> resultDevices = roles.get(roles.size() - 1);

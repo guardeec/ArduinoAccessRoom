@@ -19,11 +19,21 @@ public class getGuestCard extends JdbcDaoSupport implements getGuestCardImpl {
         ArrayList<Map> message;
         try{
             message = (ArrayList<Map>) getJdbcTemplate().queryForObject(
-                    "SELECT * FROM guests WHERE name = coalesce(?,name) AND date = coalesce(?, date) AND id = coalesce((SELECT guest_id FROM guests_and_cards WHERE card_id = ?) ,id);",
+                    "SELECT * FROM guests WHERE name = coalesce(?,name) AND date = coalesce(?, date) AND id = coalesce((SELECT guest_id FROM guests_and_cards WHERE card_id = ?) ,id) AND current_date = date AND current_time <= time_end;",
                     new Object[]{name, date, cardId},
                     new SearchRowMapper()
             );
-        }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
+        }catch (org.springframework.dao.EmptyResultDataAccessException ex){
+            message = new ArrayList<>();
+            Map<String, String> messageComponent = new HashMap<>();
+            messageComponent.put("id", "no");
+            messageComponent.put("name", "no");
+            messageComponent.put("time_start", "no");
+            messageComponent.put("time_end", "no");
+            messageComponent.put("date", "no");
+            messageComponent.put("message", "Success getting devices list");
+            message.add(messageComponent);
+        } catch (org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new ArrayList<>();
             Map<String, String> messageComponent = new HashMap<>();
             messageComponent.put("message", "Error when getting guestCard list");

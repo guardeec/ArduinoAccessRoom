@@ -28,7 +28,7 @@ public class deleteCardController {
                     +"&adminPassword="+adminPassword
                     +"&cardId="+id
                     ;
-            Map<String, String> answer = httpRequest.makeInMap(message, URL.addDevice);
+            Map<String, String> answer = httpRequest.makeInMap(message, URL.deleteCard);
             if (answer.get("message").contains("Success")){
                 SecurityController.deleteCardStage.close();
             }else {

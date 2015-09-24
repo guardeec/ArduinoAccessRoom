@@ -33,7 +33,7 @@ public class changePolicyOnDevice extends HttpServlet {
         if(adminTable.get("securityAdmin")){
             String[] deviceId = (String[]) reqMap.get("deviceId");
             String[] roleId = (String[]) reqMap.get("roleId");
-            String[] access = (String[]) reqMap.get("getAccess");
+            String[] access = (String[]) reqMap.get("status");
             message = policyDB.change(  Integer.parseInt(deviceId[0]),
                                         Integer.parseInt(roleId[0]),
                                         Boolean.parseBoolean(access[0])

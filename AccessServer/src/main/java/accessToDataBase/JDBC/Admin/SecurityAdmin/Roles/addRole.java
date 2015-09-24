@@ -17,7 +17,7 @@ public class addRole extends JdbcDaoSupport implements addRoleImpl {
         Map<String, String> message;
         try{
             message = (Map<String, String>) getJdbcTemplate().queryForObject(
-                    "INSERT INTO roles(title) VALUES (?) RETURNING id;",
+                    "INSERT INTO system_roles(title) VALUES (?) RETURNING id;",
                     new Object[]{role},
                     new SearchRowMapper()
             );

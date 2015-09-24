@@ -17,7 +17,7 @@ public class getPolicyOnDevice extends JdbcDaoSupport implements getPolicyOnDevi
         Map<String, String> message = null;
         try{
             message = (Map<String, String>) getJdbcTemplate().queryForObject(
-                    "SELECT * FROM access_rights WHERE role_id = coalesce(?, role_id) AND device_id = coalesce(?, device_id) AND access = coalesce(NULL, access);",
+                    "SELECT * FROM access_rights WHERE system_role_id = coalesce(?, system_role_id) AND device_id = coalesce(?, device_id) AND access = coalesce(NULL, access);",
                     new Object[]{roleId, deviceId},
                     new SearchRowMapper()
             );

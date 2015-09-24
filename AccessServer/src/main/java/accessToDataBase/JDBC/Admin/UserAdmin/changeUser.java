@@ -18,7 +18,7 @@ public class changeUser extends JdbcDaoSupport implements changeUserImpl {
         if(name != null){
             try{
                 getJdbcTemplate().update(
-                        "UPDATE users SET name = ? WHERE id = ?;",
+                        "UPDATE employees SET name = ? WHERE id = ?;",
                         new Object[]{name, id}
                 );
                 message = new HashMap<>();
@@ -31,7 +31,7 @@ public class changeUser extends JdbcDaoSupport implements changeUserImpl {
         if (roleId != null){
             try{
                 getJdbcTemplate().update(
-                        "UPDATE users_and_user_roles SET user_role_id = ? WHERE user_id = ?;",
+                        "UPDATE employees_and_roles SET system_role_id = ? WHERE employee_id = ?;",
                         new Object[]{roleId, id}
                 );
                 message = new HashMap<>();

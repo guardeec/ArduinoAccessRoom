@@ -18,7 +18,7 @@ public class checkFreeCards extends JdbcDaoSupport implements checkFreeCardsImpl
         ArrayList<Map> message;
         try{
             message = (ArrayList<Map>) getJdbcTemplate().queryForObject(
-                    "SELECT id FROM cards WHERE id NOT IN (SELECT card_id FROM users_and_cards) AND id NOT IN (SELECT card_id FROM guests_and_cards);",
+                    "SELECT id FROM cards WHERE id NOT IN (SELECT card_id FROM employees_and_cards) AND id NOT IN (SELECT card_id FROM guests_and_cards);",
                     new Object[]{},
                     new SearchRowMapper()
             );

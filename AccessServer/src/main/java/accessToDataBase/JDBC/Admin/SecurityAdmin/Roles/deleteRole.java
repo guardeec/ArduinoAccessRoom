@@ -17,7 +17,7 @@ public class deleteRole extends JdbcDaoSupport implements deleteRoleImpl {
         Map<String, String> message;
         try{
             getJdbcTemplate().update(
-                    "DELETE FROM roles WHERE id = ?;",
+                    "DELETE FROM system_roles WHERE id = ?;",
                     new Object[]{roleId}
             );
             message = new HashMap<>();

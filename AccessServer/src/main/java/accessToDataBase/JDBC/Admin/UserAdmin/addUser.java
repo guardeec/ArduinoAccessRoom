@@ -17,7 +17,7 @@ public class addUser extends JdbcDaoSupport implements addUserImpl {
         Map<String, String> message;
         try{
             message = (Map<String, String>) getJdbcTemplate().queryForObject(
-                    "INSERT INTO users(name) VALUES (?) RETURNING id;",
+                    "INSERT INTO employees(name,employee_status_id) VALUES (?, 1) RETURNING id;",
                     new Object[]{name},
                     new SearchRowMapper()
             );

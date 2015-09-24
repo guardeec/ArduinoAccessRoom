@@ -18,7 +18,7 @@ public class getRole extends JdbcDaoSupport implements getRoleImpl {
         ArrayList<Map> message;
         try{
             message = (ArrayList<Map>) getJdbcTemplate().queryForObject(
-                    "SELECT * FROM roles WHERE id = coalesce(?, id) AND title = coalesce(?, title);",
+                    "SELECT * FROM system_roles WHERE id = coalesce(?, id) AND title = coalesce(?, title);",
                     new Object[]{roleId, role},
                     new SearchRowMapper()
             );

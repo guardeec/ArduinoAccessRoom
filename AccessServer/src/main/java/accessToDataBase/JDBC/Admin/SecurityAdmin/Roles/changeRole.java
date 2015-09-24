@@ -18,7 +18,7 @@ public class changeRole extends JdbcDaoSupport implements changeRoleImpl {
 
         try{
             getJdbcTemplate().update(
-                    "UPDATE roles SET title = ? WHERE id = ?;",
+                    "UPDATE system_roles SET title = ? WHERE id = ?;",
                     new Object[]{role, roleId}
             );
             message = new HashMap<>();

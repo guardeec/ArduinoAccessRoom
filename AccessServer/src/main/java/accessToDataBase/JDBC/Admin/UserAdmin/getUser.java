@@ -19,7 +19,7 @@ public class getUser extends JdbcDaoSupport implements getUserImpl {
         ArrayList<Map> message;
         try{
             message = (ArrayList<Map>) getJdbcTemplate().queryForObject(
-                    "SELECT user_id, name, user_role_id FROM users JOIN users_and_user_roles ON id = user_id WHERE id = coalesce(?,id) AND name = coalesce(?,name) AND user_role_id = coalesce(?, user_role_id);",
+                    "SELECT employee_id, name, system_role_id FROM employees JOIN employees_and_roles ON id = employee_id JOIN employee_status ON employee_status_id = employee_status.id WHERE employees.id = coalesce(?,employees.id) AND name = coalesce(?,name) AND system_role_id = coalesce(?, system_role_id) AND description = 'unblocked';",
                     new Object[]{userId, name, roleId},
                     new SearchRowMapper()
             );
@@ -39,9 +39,9 @@ public class getUser extends JdbcDaoSupport implements getUserImpl {
 
             do {
                 Map<String, String> messageComponent = new HashMap<>();
-                messageComponent.put("id", Integer.toString(resultSet.getInt("user_id")));
+                messageComponent.put("id", Integer.toString(resultSet.getInt("employee_id")));
                 messageComponent.put("name", resultSet.getString("name"));
-                messageComponent.put("role", Integer.toString(resultSet.getInt("user_role_id")));
+                messageComponent.put("role", Integer.toString(resultSet.getInt("system_role_id")));
                 message.add(messageComponent);
             }while (resultSet.next());
 

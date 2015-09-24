@@ -19,11 +19,17 @@ public class checkFreeCards extends JdbcDaoSupport implements checkFreeCardsImpl
         ArrayList<Map> message;
         try{
             message = (ArrayList<Map>) getJdbcTemplate().queryForObject(
-                    "SELECT id FROM cards WHERE id NOT IN (SELECT card_id FROM users_and_cards) AND id NOT IN (SELECT card_id FROM guests_and_cards);",
+                    "SELECT id FROM cards WHERE id NOT IN (SELECT card_id FROM employees_and_cards) AND id NOT IN (SELECT card_id FROM guests_and_cards);",
                     new Object[]{},
                     new SearchRowMapper()
             );
-        }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
+        }catch (org.springframework.dao.EmptyResultDataAccessException ex){
+            message = new ArrayList<>();
+            Map<String, String> messageComponent = new HashMap<>();
+            messageComponent.put("id", "No free cards");
+            messageComponent.put("message", "Success getting user free Cards");
+            message.add(messageComponent);
+        } catch (org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new ArrayList<>();
             Map<String, String> messageComponent = new HashMap<>();
             messageComponent.put("message", "Error when checking user free Cards");

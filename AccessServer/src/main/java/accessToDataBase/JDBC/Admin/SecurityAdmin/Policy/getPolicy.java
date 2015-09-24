@@ -18,7 +18,7 @@ public class getPolicy extends JdbcDaoSupport implements getPolicyImpl {
         ArrayList<Map> message;
         try{
             message = (ArrayList<Map>) getJdbcTemplate().queryForObject(
-                    "SELECT * FROM access_rights WHERE role_id = coalesce(?, role_id) AND device_id = coalesce(?, device_id) AND access = coalesce(NULL, access);",
+                    "SELECT * FROM access_rights WHERE system_role_id = coalesce(?, system_role_id) AND device_id = coalesce(?, device_id) AND access = coalesce(NULL, access);",
                     new Object[]{roleId, deviceId},
                     new SearchRowMapper()
             );
@@ -40,9 +40,9 @@ public class getPolicy extends JdbcDaoSupport implements getPolicyImpl {
 
             do {
                 Map<String, String> messageComponent = new HashMap<>();
-                messageComponent.put("role_id", Integer.toString(resultSet.getInt("role_id")));
+                messageComponent.put("role_id", Integer.toString(resultSet.getInt("system_role_id")));
                 messageComponent.put("device_id", resultSet.getString("device_id"));
-                messageComponent.put("getAccess", resultSet.getString("getAccess"));
+                messageComponent.put("access", resultSet.getString("access"));
                 message.add(messageComponent);
             }while (resultSet.next());
 

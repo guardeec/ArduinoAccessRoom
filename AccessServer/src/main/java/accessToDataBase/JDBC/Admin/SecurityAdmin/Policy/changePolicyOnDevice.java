@@ -17,7 +17,7 @@ public class changePolicyOnDevice extends JdbcDaoSupport implements changePolicy
         Map<String, String> message;
         try{
            getJdbcTemplate().update(
-                    "UPDATE access_rights SET access = ? WHERE role_id = ? AND device_id = ?;",
+                    "UPDATE access_rights SET access = ? WHERE system_role_id = ? AND device_id = ?;",
                     new Object[]{access, roleId, deviceId}
             );
             message = new HashMap<>();

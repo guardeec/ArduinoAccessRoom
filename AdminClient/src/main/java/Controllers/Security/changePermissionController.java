@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,7 +33,7 @@ public class changePermissionController {
         if (deviceId.isEmpty() || roleId.isEmpty() || status.isEmpty() && (status.contains("true") || status.contains("false"))){
 
         }else {
-            if (status.contains("true")){
+            if (status.contains("Есть доступ")){
                 status="false";
             }else {
                 status="true";
@@ -41,19 +42,22 @@ public class changePermissionController {
             String adminName = adminType.getLogin();
             String adminPassword = adminType.getPassword();
             String message =    "adminName="+adminName
-                    +"&adminPassword="+adminPassword
-                    +"&deviceId="+ deviceId
-                    +"&roleId="+roleId
-                    +"&status="+status
+                                +"&adminPassword="+adminPassword
+                                +"&deviceId="+ deviceId
+                                +"&roleId="+roleId
+                                +"&status="+status
                     ;
+
             Map<String, String> answer = httpRequest.makeInMap(message, URL.changeSecurityPermission);
             if (answer.get("message").contains("Success")){
-                permissionSecurityStatus.setText(status);
-                if (status.contains("true")){
+                if (status.contains("Нет доступа")){
                     permissionSecurityStatus.setFill(Color.GREEN);
+                    status="Есть доступ";
                 }else {
                     permissionSecurityStatus.setFill(Color.RED);
+                    status="Нет доступа";
                 }
+                permissionSecurityStatus.setText(status);
             }else {
                 permissionSecurityStatus.setText("Ошибка сервера");
                 permissionSecurityStatus.setFill(Color.BLACK);
@@ -76,13 +80,16 @@ public class changePermissionController {
                     +"&deviceId="+ id
                     +"&roleId="+role
                     ;
-            Map<String, String> answer = httpRequest.makeInMap(message, URL.getSecurityPermission);
-            if (answer.get("message").contains("Success")){
-                String status = answer.get("GetAccess");
-                if (status.contains("true")){
+            List<Map> answer = httpRequest.makeInList(message, URL.getSecurityPermission);
+            Map<String, String> resultPermissions = answer.get(answer.size() - 1);
+            if (resultPermissions.get("message").contains("Success")){
+                String status = (String) answer.get(0).get("access");
+                if (status.contains("t")){
                     permissionSecurityStatus.setFill(Color.GREEN);
+                    status="Есть доступ";
                 }else {
                     permissionSecurityStatus.setFill(Color.RED);
+                    status="Нет доступа";
                 }
                 permissionSecurityStatus.setText(status);
             }else {

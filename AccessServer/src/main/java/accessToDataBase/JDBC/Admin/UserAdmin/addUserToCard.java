@@ -17,11 +17,11 @@ public class addUserToCard extends JdbcDaoSupport implements addUserToCardImpl {
         Map<String, String> message;
         try{
             getJdbcTemplate().update(
-                    "INSERT INTO users_and_cards VALUES (?,?);",
+                    "INSERT INTO employees_and_cards VALUES (?,?);",
                     new Object[]{userId, cardId}
             );
             getJdbcTemplate().update(
-                    "INSERT INTO users_and_user_roles VALUES (?,?);",
+                    "INSERT INTO employees_and_roles VALUES (?,?);",
                     new Object[]{userId, roleId}
             );
             message = new HashMap<>();

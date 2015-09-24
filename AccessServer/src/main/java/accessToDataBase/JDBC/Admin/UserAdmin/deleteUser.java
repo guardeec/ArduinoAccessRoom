@@ -26,6 +26,28 @@ public class deleteUser extends JdbcDaoSupport implements deleteUserImpl {
             message = new HashMap<>();
             message.put("message", "Error when deleting user");
         }
+        try{
+            getJdbcTemplate().update(
+                    "DELETE FROM employees_and_roles WHERE employee_id = ?;",
+                    new Object[]{userId}
+            );
+            message = new HashMap<>();
+            message.put("message", "Success when deleting user");
+        }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
+            message = new HashMap<>();
+            message.put("message", "Error when deleting user");
+        }
+        try{
+            getJdbcTemplate().update(
+                    "UPDATE employees SET employee_status_id = 3 WHERE id = ?;",
+                    new Object[]{userId}
+            );
+            message = new HashMap<>();
+            message.put("message", "Success when deleting user");
+        }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
+            message = new HashMap<>();
+            message.put("message", "Error when deleting user");
+        }
         return message;
     }
 }

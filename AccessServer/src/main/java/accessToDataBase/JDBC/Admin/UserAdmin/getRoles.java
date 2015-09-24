@@ -18,7 +18,7 @@ public class getRoles extends JdbcDaoSupport implements getRolesImpl {
         ArrayList<Map> message;
         try{
             message = (ArrayList<Map>) getJdbcTemplate().queryForObject(
-                    "SELECT * FROM user_roles WHERE id != 1;",
+                    "SELECT * FROM system_roles WHERE id != 1;",
                     new Object[]{},
                     new SearchRowMapper()
             );

@@ -23,7 +23,15 @@ public class getDevice extends JdbcDaoSupport implements getDeviceImpl {
                     new Object[]{id, ip, specification},
                     new SearchRowMapper()
             );
-        }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
+        }catch (org.springframework.dao.EmptyResultDataAccessException ex){
+            message = new ArrayList<>();
+            Map<String, String> messageComponent = new HashMap<>();
+            messageComponent.put("id", "...");
+            messageComponent.put("specification", "...");
+            messageComponent.put("ip", "...");
+            messageComponent.put("message", "Success getting devices list");
+            message.add(messageComponent);
+        } catch (org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new ArrayList<>();
             Map<String, String> messageComponent = new HashMap<>();
             messageComponent.put("message", "Error when getting devices list");
