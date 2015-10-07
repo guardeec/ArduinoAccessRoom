@@ -21,12 +21,12 @@ public class checkRunnable extends JdbcDaoSupport implements checkRunnableImpl {
                     new Object[]{},
                     new SearchRowMapper()
             );
-        }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
-            message = new HashMap<>();
-            message.put("DB", false);
-        }catch (org.springframework.jdbc.BadSqlGrammarException ex){
+        }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.BadSqlGrammarException ex){
             message = new HashMap<>();
             message.put("DB", true);
+        } catch (org.springframework.jdbc.CannotGetJdbcConnectionException ex){
+            message = new HashMap<>();
+            message.put("DB", false);
         }
         return message;
     }

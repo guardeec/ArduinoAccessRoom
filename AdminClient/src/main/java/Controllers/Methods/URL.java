@@ -4,7 +4,9 @@ package Controllers.Methods;
  * Created by root on 13.08.15.
  */
 public class URL {
-    private static final String url          = "192.168.1.248:55431/AccessServer%20archive/";
+    private static final String url          = "192.168.1.96:8080/AccessServer%20archive/";
+
+    public static final String checkRunnable= url + "checkRunnable";
 
     public static final String getAdminType = url + "getAdminType";
 
@@ -18,6 +20,7 @@ public class URL {
     public static final String addGuest     = url + "guestAdmin/addGuest";
     public static final String changeGuest  = url + "guestAdmin/changeGuest";
     public static final String deleteGuest  = url + "guestAdmin/deleteGuest";
+    public static final String getHistory   = url + "guestAdmin/getHistory";
 
     public static final String getFreeUserCards=url+"userAdmin/checkFreeCards";
     public static final String getUserRoles = url + "userAdmin/getRolesUser";
@@ -36,7 +39,10 @@ public class URL {
     public static final String getSecurityPermission= url + "securityAdmin/getPolicy";
     public static final String changeSecurityPermission=url + "securityAdmin/changePolicyOnDevice";
 
-    public static final String getAccounts=url + " ";
+    public static final String getAccounts  = url + "securityAdmin/getAccount";
+    public static final String addAccount   = url + "securityAdmin/addAccount";
+    public static final String changeAccount= url + "securityAdmin/changeAccount";
+    public static final String deleteAccount= url + "securityAdmin/deleteAccount";
 
 
 }

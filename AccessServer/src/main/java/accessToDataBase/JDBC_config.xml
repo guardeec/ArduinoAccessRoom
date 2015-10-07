@@ -13,13 +13,13 @@
        <bean id="dataSourceArduino" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
-              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/Access_DB_Server" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Access_DB_Server" />
               <property name="user" value="arduino" />
-              <property name="password" value="arduino" />
+              <property name="password" value="Ip}%pS#\1`Nj6CSA_uhJANRlsTweV/_KK#X-AqGZQ6gVDvY{E" />
               <!-- pool sizing -->
-              <property name="initialPoolSize" value="3" />
+              <property name="initialPoolSize" value="6" />
               <property name="minPoolSize" value="6" />
-              <property name="maxPoolSize" value="25" />
+              <property name="maxPoolSize" value="100" />
               <property name="acquireIncrement" value="3" />
               <property name="maxStatements" value="0" />
               <!-- retries -->
@@ -40,13 +40,13 @@
        <bean id="dataSourceDeviceAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
-              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/Access_DB_Server" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Access_DB_Server" />
               <property name="user" value="technical_department" />
-              <property name="password" value="admin" />
+              <property name="password" value="zJ*=t%QHF;M@c)\`gNN}^pA;~)tP2D''ow#M-^rni$d#R%Rm:I" />
               <!-- pool sizing -->
               <property name="initialPoolSize" value="3" />
               <property name="minPoolSize" value="6" />
-              <property name="maxPoolSize" value="25" />
+              <property name="maxPoolSize" value="1000" />
               <property name="acquireIncrement" value="3" />
               <property name="maxStatements" value="0" />
               <!-- retries -->
@@ -67,13 +67,13 @@
        <bean id="dataSourceGuestCardAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
-              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/Access_DB_Server" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Access_DB_Server" />
               <property name="user" value="reception_department" />
-              <property name="password" value="admin" />
+              <property name="password" value="CU`>Yy.bN1fy./,$;gZ[V,;rAU{n?zos=:AZYO$P.+q+U/OY)" />
               <!-- pool sizing -->
               <property name="initialPoolSize" value="3" />
               <property name="minPoolSize" value="6" />
-              <property name="maxPoolSize" value="25" />
+              <property name="maxPoolSize" value="1000" />
               <property name="acquireIncrement" value="3" />
               <property name="maxStatements" value="0" />
               <!-- retries -->
@@ -94,13 +94,13 @@
        <bean id="dataSourceUserAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
-              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/Access_DB_Server" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Access_DB_Server" />
               <property name="user" value="hr_department" />
-              <property name="password" value="admin" />
+              <property name="password" value="+%hM9_f>+gYG@!FJZ6kok@>jq#C@q/lBo2,Dm~crwAd*@ZcK" />
               <!-- pool sizing -->
               <property name="initialPoolSize" value="3" />
               <property name="minPoolSize" value="6" />
-              <property name="maxPoolSize" value="25" />
+              <property name="maxPoolSize" value="1000" />
               <property name="acquireIncrement" value="3" />
               <property name="maxStatements" value="0" />
               <!-- retries -->
@@ -121,13 +121,13 @@
        <bean id="dataSourceSecurityAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
-              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/Access_DB_Server" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Access_DB_Server" />
               <property name="user" value="security_department" />
-              <property name="password" value="admin" />
+              <property name="password" value="ZxEjI8s,bK4cpFe=s#ZMl2BXhxop%~v|=Ak*G?9ADW`}?8" />
               <!-- pool sizing -->
               <property name="initialPoolSize" value="3" />
               <property name="minPoolSize" value="6" />
-              <property name="maxPoolSize" value="25" />
+              <property name="maxPoolSize" value="1000" />
               <property name="acquireIncrement" value="3" />
               <property name="maxStatements" value="0" />
               <!-- retries -->
@@ -148,13 +148,13 @@
        <bean id="dataSourceAuthorisation" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
-              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/Access_DB_Server" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Access_DB_Server" />
               <property name="user" value="arduino" />
-              <property name="password" value="arduino" />
+              <property name="password" value="Ip}%pS#\1`Nj6CSA_uhJANRlsTweV/_KK#X-AqGZQ6gVDvY{E" />
               <!-- pool sizing -->
               <property name="initialPoolSize" value="3" />
               <property name="minPoolSize" value="6" />
-              <property name="maxPoolSize" value="25" />
+              <property name="maxPoolSize" value="1000" />
               <property name="acquireIncrement" value="3" />
               <property name="maxStatements" value="0" />
               <!-- retries -->
@@ -232,6 +232,9 @@
        <bean id="getGuestAdmin" class="accessToDataBase.JDBC.Admin.GuestCardAdmin.getGuestCard">
               <property name="dataSource" ref="dataSourceGuestCardAdmin" />
        </bean>
+       <bean id="getGuestHistoryAdmin" class="accessToDataBase.JDBC.Admin.GuestCardAdmin.getGuestCardHistoty">
+              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
+       </bean>
 
 
 
@@ -268,9 +271,6 @@
        <bean id="addCardSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Cards.addCard">
               <property name="dataSource" ref="dataSourceSecurityAdmin" />
        </bean>
-       <bean id="changeCardSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Cards.changeCard">
-              <property name="dataSource" ref="dataSourceSecurityAdmin" />
-       </bean>
        <bean id="deleteCardSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Cards.deleteCard">
               <property name="dataSource" ref="dataSourceSecurityAdmin" />
        </bean>
@@ -299,6 +299,19 @@
               <property name="dataSource" ref="dataSourceSecurityAdmin" />
        </bean>
        <bean id="getRoleSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Roles.getRole">
+              <property name="dataSource" ref="dataSourceSecurityAdmin" />
+       </bean>
+
+       <bean id="getAccountSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Accounts.GetAccount">
+              <property name="dataSource" ref="dataSourceSecurityAdmin" />
+       </bean>
+       <bean id="addAccountSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Accounts.AddAccount">
+              <property name="dataSource" ref="dataSourceSecurityAdmin" />
+       </bean>
+       <bean id="changeAccountSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Accounts.ChangeAccount">
+              <property name="dataSource" ref="dataSourceSecurityAdmin" />
+       </bean>
+       <bean id="deleteAccountSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Accounts.DeleteAccount">
               <property name="dataSource" ref="dataSourceSecurityAdmin" />
        </bean>
 

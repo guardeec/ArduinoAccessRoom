@@ -14,15 +14,20 @@ import java.util.Map;
  */
 public class getCard extends JdbcDaoSupport implements getCardImpl {
     @Override
-    public ArrayList<Map> get(String card, Integer cardId) {
+    public ArrayList<Map> get() {
         ArrayList<Map> message;
         try{
             message = (ArrayList<Map>) getJdbcTemplate().queryForObject(
-                    "SELECT * FROM cards WHERE id = coalesce(?, id) AND number = coalesce(?, number);",
-                    new Object[]{cardId, card},
+                    "SELECT id FROM cards WHERE id NOT IN (SELECT card_id FROM employees_and_cards) AND id NOT IN (SELECT card_id FROM guests_and_cards);",
+                    new Object[]{},
                     new SearchRowMapper()
             );
-        }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
+        }catch (org.springframework.dao.EmptyResultDataAccessException ex){
+            message = new ArrayList<>();
+            Map<String, String> messageComponent = new HashMap<>();
+            messageComponent.put("message", "Success when getting empty card list");
+            message.add(messageComponent);
+        }catch (org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new ArrayList<>();
             Map<String, String> messageComponent = new HashMap<>();
             messageComponent.put("message", "Error when getting card list");
@@ -39,7 +44,6 @@ public class getCard extends JdbcDaoSupport implements getCardImpl {
             do {
                 Map<String, String> messageComponent = new HashMap<>();
                 messageComponent.put("id", Integer.toString(resultSet.getInt("id")));
-                messageComponent.put("card", resultSet.getString("number"));
                 message.add(messageComponent);
             }while (resultSet.next());
 

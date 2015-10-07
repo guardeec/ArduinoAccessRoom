@@ -40,6 +40,50 @@ public class GuestCardController extends DeviceController {
 
 
 
+    public void findHistoryBtnAction(){
+        AdminType adminType = AdminType.getInstance();
+        String adminName = adminType.getLogin();
+        String adminPassword = adminType.getPassword();
+        String date = guestDate.getText();
+        String name = guestName.getText();
+
+        String message =    "adminName="+adminName
+                +"&adminPassword="+adminPassword
+                +"&name="+name
+                +"&date="+date
+                ;
+
+        List<Map> answer = httpRequest.makeInList(message, URL.getHistory);
+        Map<String, String> result = answer.get(answer.size() - 1);
+        if (result.get("message").contains("Success")){
+            ObservableList<Guest> guests = FXCollections.observableArrayList();
+            for (int i=0; i<answer.size()-1; i++){
+                Guest guest = new Guest(
+                        (String) answer.get(i).get("id"),
+                        (String) answer.get(i).get("name"),
+                        (String) answer.get(i).get("time_start"),
+                        (String) answer.get(i).get("time_end"),
+                        (String) answer.get(i).get("date"),
+                        (String) answer.get(i).get("card_id")
+                );
+                guests.add(guest);
+            }
+            guestTable.setItems(guests);
+        }else {
+            ObservableList<Guest> guests = FXCollections.observableArrayList();
+            Guest guest = new Guest(
+                    "Ошибка Сервера",
+                    "Ошибка Сервера",
+                    "Ошибка Сервера",
+                    "Ошибка Сервера",
+                    "Ошибка Сервера",
+                    "Ошибка Сервера"
+            );
+            guests.add(guest);
+            guestTable.setItems(guests);
+        }
+    }
+
     public void findGuestBtnAction(){
         AdminType adminType = AdminType.getInstance();
         String adminName = adminType.getLogin();
@@ -63,6 +107,7 @@ public class GuestCardController extends DeviceController {
                 Guest guest = new Guest(
                         (String) answer.get(i).get("id"),
                         (String) answer.get(i).get("name"),
+                        (String) answer.get(i).get("card_id"),
                         (String) answer.get(i).get("time_start"),
                         (String) answer.get(i).get("time_end"),
                         (String) answer.get(i).get("date")
@@ -73,6 +118,7 @@ public class GuestCardController extends DeviceController {
         }else {
             ObservableList<Guest> guests = FXCollections.observableArrayList();
             Guest guest = new Guest(
+                    "Ошибка Сервера",
                     "Ошибка Сервера",
                     "Ошибка Сервера",
                     "Ошибка Сервера",
@@ -102,6 +148,7 @@ public class GuestCardController extends DeviceController {
                         null,
                         null,
                         null,
+                        null,
                         null
                 );
                 guests.add(guest);
@@ -111,6 +158,7 @@ public class GuestCardController extends DeviceController {
             ObservableList<Guest> guests = FXCollections.observableArrayList();
             Guest guest = new Guest(
                     "Ошибка Сервера",
+                    null,
                     null,
                     null,
                     null,

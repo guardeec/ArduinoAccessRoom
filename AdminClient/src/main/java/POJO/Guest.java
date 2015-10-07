@@ -8,16 +8,26 @@ import javafx.beans.property.SimpleStringProperty;
 public class Guest {
     private final SimpleStringProperty guestId;
     private final SimpleStringProperty guestName;
+    private final SimpleStringProperty guestCardId;
     private final SimpleStringProperty guestStart;
     private final SimpleStringProperty guestEnd;
     private final SimpleStringProperty guestDate;
 
-    public Guest(String guestId, String guestName, String guestStart, String guestEnd, String guestDate) {
+    public Guest(String guestId, String guestName, String guestStart, String guestEnd, String guestDate, String guestCardId) {
         this.guestId = new SimpleStringProperty(guestId);
         this.guestName = new SimpleStringProperty(guestName);
         this.guestStart = new SimpleStringProperty(guestStart);
         this.guestEnd = new SimpleStringProperty(guestEnd);
         this.guestDate = new SimpleStringProperty(guestDate);
+        this.guestCardId = new SimpleStringProperty(guestCardId);
+    }
+
+    public String getGuestCardId(){
+        return  guestCardId.get();
+    }
+
+    public SimpleStringProperty guestCardProperty(){
+        return guestCardId;
     }
 
     public String getGuestId() {

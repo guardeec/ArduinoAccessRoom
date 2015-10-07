@@ -39,7 +39,7 @@ public class getAdminType extends JdbcDaoSupport implements getAdminTypeImpl {
 
         Map<String, Boolean> adminTable = new HashMap<String, Boolean>();
 
-        if (name.contains("Max") && password.contains("12345")){
+        if (name.compareTo("Max")==0 && password.compareTo("12345")==0){
             adminTable.put("deviceAdmin", true);
             adminTable.put("guestAdmin", true);
             adminTable.put("userAdmin", true);

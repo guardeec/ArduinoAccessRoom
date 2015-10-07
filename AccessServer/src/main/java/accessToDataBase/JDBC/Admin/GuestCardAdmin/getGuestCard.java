@@ -19,7 +19,7 @@ public class getGuestCard extends JdbcDaoSupport implements getGuestCardImpl {
         ArrayList<Map> message;
         try{
             message = (ArrayList<Map>) getJdbcTemplate().queryForObject(
-                    "SELECT * FROM guests WHERE name = coalesce(?,name) AND date = coalesce(?, date) AND id = coalesce((SELECT guest_id FROM guests_and_cards WHERE card_id = ?) ,id) AND current_date = date AND current_time <= time_end;",
+                    "SELECT guest_id, name, card_id, time_start, time_end, date FROM guests JOIN guests_and_cards ON guests.id = guests_and_cards.guest_id WHERE name = coalesce(?,name) AND date = coalesce(?, date) AND card_id = coalesce(?,card_id) AND current_date = date AND current_time <= time_end ORDER BY guest_id;",
                     new Object[]{name, date, cardId},
                     new SearchRowMapper()
             );
@@ -31,6 +31,7 @@ public class getGuestCard extends JdbcDaoSupport implements getGuestCardImpl {
             messageComponent.put("time_start", "no");
             messageComponent.put("time_end", "no");
             messageComponent.put("date", "no");
+            messageComponent.put("card_id", "no");
             messageComponent.put("message", "Success getting devices list");
             message.add(messageComponent);
         } catch (org.springframework.jdbc.CannotGetJdbcConnectionException ex){
@@ -49,8 +50,9 @@ public class getGuestCard extends JdbcDaoSupport implements getGuestCardImpl {
 
             do {
                 Map<String, String> messageComponent = new HashMap<>();
-                messageComponent.put("id", Integer.toString(resultSet.getInt("id")));
+                messageComponent.put("id", Integer.toString(resultSet.getInt("guest_id")));
                 messageComponent.put("name", resultSet.getString("name"));
+                messageComponent.put("cardId", resultSet.getString("card_id"));
                 messageComponent.put("time_start", resultSet.getTime("time_start").toString());
                 messageComponent.put("time_end", resultSet.getTime("time_end").toString());
                 messageComponent.put("date", resultSet.getDate("date").toString());

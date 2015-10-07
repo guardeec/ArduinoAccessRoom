@@ -22,7 +22,12 @@ public class checkFreeCards extends JdbcDaoSupport implements checkFreeCardsImpl
                     new Object[]{},
                     new SearchRowMapper()
             );
-        }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
+        }catch (org.springframework.dao.EmptyResultDataAccessException ex){
+            message = new ArrayList<>();
+            Map<String, String> messageComponent = new HashMap<>();
+            messageComponent.put("message", "Success when checking guest free Cards");
+            message.add(messageComponent);
+        } catch (org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new ArrayList<>();
             Map<String, String> messageComponent = new HashMap<>();
             messageComponent.put("message", "Error when checking guest free Cards");

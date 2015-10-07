@@ -198,9 +198,14 @@
                               </HBox>
                               <HBox prefHeight="60.0">
                                  <children>
+                                    <Button fx:id="findHistoryBtn" layoutX="158.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#findHistoryBtnAction" text="История">
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </HBox.margin>
+                                    </Button>
                                     <Button fx:id="findGuestBtn" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#findGuestBtnAction" text="Найти">
                                        <HBox.margin>
-                                          <Insets left="148.0" right="20.0" top="10.0" />
+                                          <Insets left="63.0" right="20.0" top="10.0" />
                                        </HBox.margin>
                                     </Button>
                                  </children>
@@ -225,22 +230,27 @@
                                              <PropertyValueFactory property="guestId" />
                                           </cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn fx:id="guestNameColumn" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="92.0" text="Имя">
+                                    <TableColumn fx:id="guestNameColumn" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="63.0" text="Имя">
                                        <cellValueFactory>
                                           <PropertyValueFactory property="guestName" />
                                        </cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn fx:id="guestStartColumn" prefWidth="63.0" text="Начало">
+                                    <TableColumn fx:id="guestСardColumn" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="53.0" text="Карта">
+                                       <cellValueFactory>
+                                          <PropertyValueFactory property="guestCardId" />
+                                       </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="guestStartColumn" prefWidth="68.0" text="Начало">
                                        <cellValueFactory>
                                           <PropertyValueFactory property="guestStart" />
                                        </cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn fx:id="guestEndColumn" prefWidth="61.0" text="Конец">
+                                    <TableColumn fx:id="guestEndColumn" prefWidth="64.0" text="Конец">
                                        <cellValueFactory>
                                           <PropertyValueFactory property="guestEnd" />
                                        </cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn fx:id="guestDateColumn" prefWidth="82.0" text="Дата">
+                                    <TableColumn fx:id="guestDateColumn" prefWidth="52.0" text="Дата">
                                        <cellValueFactory>
                                           <PropertyValueFactory property="guestDate" />
                                        </cellValueFactory>
@@ -519,6 +529,15 @@
                                           </HBox>
                                        </children>
                                     </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#accountsBtnAction" text="Аккаунты">
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="28.0" />
+                                       </HBox.margin>
+                                    </Button>
                                  </children>
                               </HBox>
                            </children>

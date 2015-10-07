@@ -14,10 +14,12 @@ import java.util.Map;
 public class deleteUser extends JdbcDaoSupport implements deleteUserImpl {
     @Override
     public Map<String, String> delete(Integer userId) {
+
         Map<String, String> message;
+
         try{
             getJdbcTemplate().update(
-                    "DELETE FROM users WHERE id = ?;",
+                    "DELETE FROM employees_and_cards WHERE employee_id = ?;",
                     new Object[]{userId}
             );
             message = new HashMap<>();
@@ -26,6 +28,7 @@ public class deleteUser extends JdbcDaoSupport implements deleteUserImpl {
             message = new HashMap<>();
             message.put("message", "Error when deleting user");
         }
+
         try{
             getJdbcTemplate().update(
                     "DELETE FROM employees_and_roles WHERE employee_id = ?;",
@@ -37,9 +40,12 @@ public class deleteUser extends JdbcDaoSupport implements deleteUserImpl {
             message = new HashMap<>();
             message.put("message", "Error when deleting user");
         }
+
+
+
         try{
             getJdbcTemplate().update(
-                    "UPDATE employees SET employee_status_id = 3 WHERE id = ?;",
+                    "DELETE FROM employees WHERE id = ?;",
                     new Object[]{userId}
             );
             message = new HashMap<>();

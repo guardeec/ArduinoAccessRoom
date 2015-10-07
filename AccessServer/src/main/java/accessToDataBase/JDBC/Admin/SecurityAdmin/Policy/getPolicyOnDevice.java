@@ -21,7 +21,10 @@ public class getPolicyOnDevice extends JdbcDaoSupport implements getPolicyOnDevi
                     new Object[]{roleId, deviceId},
                     new SearchRowMapper()
             );
-        }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
+        }catch (org.springframework.dao.EmptyResultDataAccessException ex){
+            message = new HashMap<>();
+            message.put("message", "Success when getting empty Devices`s Polices");
+        }catch (org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new HashMap<>();
             message.put("message", "Error when getting Devices`s Polices");
         }
@@ -32,7 +35,7 @@ public class getPolicyOnDevice extends JdbcDaoSupport implements getPolicyOnDevi
         @Override
         public Object mapRow(ResultSet resultSet, int i) throws SQLException {
             Map <String, String> searchStrokeResult = new HashMap<>();
-            searchStrokeResult.put("getAccess", Boolean.toString(resultSet.getBoolean("getAccess")));
+            searchStrokeResult.put("getAccess", Boolean.toString(resultSet.getBoolean("access")));
             searchStrokeResult.put("message","Success getting Devices`s Polices");
             return searchStrokeResult;
         }

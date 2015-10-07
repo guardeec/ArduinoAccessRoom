@@ -56,6 +56,10 @@
         <servlet-name>checkFreeCards</servlet-name>
         <servlet-class>accessToDataBase.Servlets.Admin_Client.GuestCardAdmin.checkFreeCards</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getGuestCardHistory</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.GuestCardAdmin.getGuestCardHistory</servlet-class>
+    </servlet>
     <!-- userAdmin -->
     <servlet>
         <servlet-name>addUser</servlet-name>
@@ -81,14 +85,14 @@
         <servlet-name>getUser</servlet-name>
         <servlet-class>accessToDataBase.Servlets.Admin_Client.UserAdmin.getUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteExpiredCards</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.GuestCardAdmin.deleteExpiredCards</servlet-class>
+    </servlet>
     <!-- securityAdmin -->
     <servlet>
         <servlet-name>addCard</servlet-name>
         <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Cards.addCard</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>changeCard</servlet-name>
-        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Cards.changeCard</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>deleteCard</servlet-name>
@@ -130,6 +134,22 @@
         <servlet-name>getRole</servlet-name>
         <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Roles.getRole</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addAccount</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Accounts.addAccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>changeAccount</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Accounts.changeAccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteAccount</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Accounts.deleteAccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getAccount</servlet-name>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Accounts.getAccount</servlet-class>
+    </servlet>
     <!-- authorisation -->
     <servlet>
         <servlet-name>checkRunnable</servlet-name>
@@ -139,6 +159,7 @@
         <servlet-name>getAdminType</servlet-name>
         <servlet-class>accessToDataBase.Servlets.Authorisation.getAdminType</servlet-class>
     </servlet>
+
 
 
 
@@ -196,6 +217,14 @@
         <servlet-name>checkFreeCards</servlet-name>
         <url-pattern>/guestAdmin/checkFreeCards</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getGuestCardHistory</servlet-name>
+        <url-pattern>/guestAdmin/getHistory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteExpiredCards</servlet-name>
+        <url-pattern>/guestAdmin/deleteExpiredCards</url-pattern>
+    </servlet-mapping>
     <!-- userAdmin -->
     <servlet-mapping>
         <servlet-name>addUser</servlet-name>
@@ -227,16 +256,12 @@
         <url-pattern>/securityAdmin/addCard</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>changeCard</servlet-name>
-        <url-pattern>/securityAdmin/changeCard</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>deleteCard</servlet-name>
         <url-pattern>/securityAdmin/deleteCard</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getCard</servlet-name>
-        <url-pattern>/securityAdmin/getCard</url-pattern>
+        <url-pattern>/securityAdmin/checkFreeCards</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>getSecurityDevice</servlet-name>
@@ -269,6 +294,22 @@
     <servlet-mapping>
         <servlet-name>getRole</servlet-name>
         <url-pattern>/securityAdmin/getRole</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addAccount</servlet-name>
+        <url-pattern>/securityAdmin/addAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changeAccount</servlet-name>
+        <url-pattern>/securityAdmin/changeAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteAccount</servlet-name>
+        <url-pattern>/securityAdmin/deleteAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getAccount</servlet-name>
+        <url-pattern>/securityAdmin/getAccount</url-pattern>
     </servlet-mapping>
     <!-- authorisation -->
     <servlet-mapping>

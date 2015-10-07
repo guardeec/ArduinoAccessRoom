@@ -1,6 +1,7 @@
-package accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Cards;
+package accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Accounts;
 
-import accessToDataBase.JDBC.Admin.SecurityAdmin.Cards.changeCardImpl;
+import accessToDataBase.JDBC.Admin.SecurityAdmin.Accounts.DeleteAccountImpl;
+import accessToDataBase.JDBC.Admin.SecurityAdmin.Cards.deleteCardImpl;
 import accessToDataBase.JDBC.Authorisation.getAdminTypeImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -17,13 +18,12 @@ import java.util.Map;
 /**
  * Created by root on 11.08.15.
  */
-public class changeCard extends HttpServlet {
+public class deleteAccount extends HttpServlet {
     private final ApplicationContext appContext = new ClassPathXmlApplicationContext("accessToDataBase/JDBC_config.xml");
-    private final changeCardImpl cardDB = (changeCardImpl) appContext.getBean("changeCardSecurityAdmin");
+    private final DeleteAccountImpl accountDB = (DeleteAccountImpl) appContext.getBean("deleteAccountSecurityAdmin");
     private final getAdminTypeImpl authorisationDB = (getAdminTypeImpl) appContext.getBean("getAdminType");
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         Map reqMap = request.getParameterMap();
         String[] adminName = (String[]) reqMap.get("adminName");
         String[] adminPassword = (String[]) reqMap.get("adminPassword");
@@ -31,11 +31,9 @@ public class changeCard extends HttpServlet {
         Map<String, Boolean> adminTable = authorisationDB.get(adminName[0], adminPassword[0]);
         Map<String, String> message = null;
         if(adminTable.get("securityAdmin")){
-            String[] id = (String[]) reqMap.get("cardId");
-            String[] card = (String[]) reqMap.get("card");
-            message = cardDB.change(    Integer.parseInt(id[0]),
-                                        card[0].isEmpty() ? card[0] : null
-            );
+            String[] id = (String[]) reqMap.get("id");
+            if (!id[0].isEmpty())
+                message = accountDB.delete(Integer.parseInt(id[0]));
         }else {
             message = new HashMap<String, String>();
             message.put("message", "wrong pass");

@@ -4,7 +4,6 @@ import Controllers.Methods.AdminType;
 import Controllers.Methods.URL;
 import Controllers.Methods.httpRequest;
 import Controllers.User.UserController;
-import POJO.Guest;
 import POJO.Security;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,6 +30,7 @@ public class SecurityController extends UserController {
     public static Stage addCardStage;
     public static Stage deleteCardStage;
     public static Stage changePermissionStage;
+    public static Stage accountsStage;
 
     @FXML
     private TextField securityDeviceId;
@@ -282,5 +282,20 @@ public class SecurityController extends UserController {
         deleteCardStage.setTitle("Удаление карты");
         deleteCardStage.setScene(scene);
         deleteCardStage.show();
+    }
+
+    public void accountsBtnAction(){
+        FXMLLoader loader = new FXMLLoader();
+        Parent root = null;
+        try {
+            root = (Parent) loader.load(getClass().getResourceAsStream("/fxml/Security/accountsWindow.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        accountsStage = new Stage();
+        accountsStage.setTitle("Удаление карты");
+        accountsStage.setScene(scene);
+        accountsStage.show();
     }
 }

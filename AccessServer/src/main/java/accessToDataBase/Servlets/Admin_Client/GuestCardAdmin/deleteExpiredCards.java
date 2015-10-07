@@ -32,12 +32,14 @@ public class deleteExpiredCards extends HttpServlet {
         Map<String, String> message = null;
         if(adminTable.get("guestAdmin")){
             guestDB.delete();
+            message = new HashMap<>();
+            message.put("message", "Success");
         }else {
             message = new HashMap<>();
             message.put("message", "wrong pass");
         }
 
         PrintWriter out = response.getWriter();
-        //out.println(message.entrySet());
+        out.println(message.entrySet());
     }
 }

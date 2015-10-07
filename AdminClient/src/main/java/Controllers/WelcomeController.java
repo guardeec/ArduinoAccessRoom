@@ -38,6 +38,7 @@ public class WelcomeController {
         String name = welcomeName.getText();
         String pass = welcomePassword.getText();
 
+
         Map<String, String> enter = httpRequest.makeInMap("adminName=" + name + "&" + "adminPasswordHash=" + pass, URL.getAdminType);
         if(!enter.get("message").toLowerCase().equals("error")){
 
@@ -70,6 +71,10 @@ public class WelcomeController {
         }else {
             welcomeMessage.setText("Нет соединения");
         }
+
+
+
+
 
     }
 }

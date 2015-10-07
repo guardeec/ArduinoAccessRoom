@@ -32,13 +32,7 @@ public class getCard extends HttpServlet {
         Map<String, Boolean> adminTable = authorisationDB.get(adminName[0], adminPassword[0]);
         ArrayList<Map> message = new ArrayList<>();
         if(adminTable.get("securityAdmin")){
-            String[] card = (String[]) reqMap.get("cardNumber");
-            String[] cardId = (String[]) reqMap.get("userId");
-
-            message = cardDB.get(   !card[0].isEmpty() ? card[0] : null,
-                                    !cardId[0].isEmpty() ? Integer.parseInt(cardId[0]) : null
-            );
-
+            message = cardDB.get();
         }else {
             Map<String, String> m = new HashMap<String, String>();
             m.put("message", "wrong pass");

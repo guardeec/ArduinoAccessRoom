@@ -23,7 +23,13 @@ public class getUser extends JdbcDaoSupport implements getUserImpl {
                     new Object[]{userId, name, roleId},
                     new SearchRowMapper()
             );
-        }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
+        }catch (org.springframework.dao.EmptyResultDataAccessException ex){
+            message = new ArrayList<>();
+            Map<String, String> messageComponent = new HashMap<>();
+            messageComponent.put("message", "Success when getting empty user list");
+            message.add(messageComponent);
+
+        }catch (org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             message = new ArrayList<>();
             Map<String, String> messageComponent = new HashMap<>();
             messageComponent.put("message", "Error when getting user list");
