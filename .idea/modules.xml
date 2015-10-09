@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/AdminClient/AdminClient.iml" filepath="$PROJECT_DIR$/AdminClient/AdminClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/ArduinoAccessRoom.iml" filepath="$PROJECT_DIR$/ArduinoAccessRoom.iml" />
       <module fileurl="file://$PROJECT_DIR$/ArduinoClient/ArduinoClient.iml" filepath="$PROJECT_DIR$/ArduinoClient/ArduinoClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SyslogServer/SyslogServer.iml" filepath="$PROJECT_DIR$/SyslogServer/SyslogServer.iml" />
     </modules>
   </component>
 </project>

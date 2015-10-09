@@ -29,13 +29,15 @@
         <module name="Arduino_Client" />
         <module name="ArduinoClient" />
         <module name="Syslog_Server" />
+        <module name="SyslogServer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="AccessServer" target="1.8" />
-      <module name="AdminClient" target="1.8" />
-      <module name="ArduinoAccessRoom" target="1.8" />
+      <module name="AccessServer" target="1.5" />
+      <module name="AdminClient" target="1.5" />
+      <module name="ArduinoAccessRoom" target="1.5" />
       <module name="ArduinoClient" target="1.5" />
+      <module name="SyslogServer" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
