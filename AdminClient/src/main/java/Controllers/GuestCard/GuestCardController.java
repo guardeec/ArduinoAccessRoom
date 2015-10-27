@@ -61,10 +61,11 @@ public class GuestCardController extends DeviceController {
                 Guest guest = new Guest(
                         (String) answer.get(i).get("id"),
                         (String) answer.get(i).get("name"),
+                        (String) answer.get(i).get("card_id"),
                         (String) answer.get(i).get("time_start"),
                         (String) answer.get(i).get("time_end"),
-                        (String) answer.get(i).get("date"),
-                        (String) answer.get(i).get("card_id")
+                        (String) answer.get(i).get("date")
+
                 );
                 guests.add(guest);
             }
@@ -104,6 +105,7 @@ public class GuestCardController extends DeviceController {
         if (result.get("message").contains("Success")){
             ObservableList<Guest> guests = FXCollections.observableArrayList();
             for (int i=0; i<answer.size()-1; i++){
+                System.out.println(answer.get(i).entrySet());
                 Guest guest = new Guest(
                         (String) answer.get(i).get("id"),
                         (String) answer.get(i).get("name"),

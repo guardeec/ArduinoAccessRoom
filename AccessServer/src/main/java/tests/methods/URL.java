@@ -4,7 +4,7 @@ package tests.methods;
  * Created by root on 13.08.15.
  */
 public class URL {
-    private static final String url          = "192.168.1.96:8080/AccessServer%20archive/";
+    private static final String url          = "192.168.1.96:8080/AccessServer/";
 
     public static final String checkRunnable= url + "checkRunnable";
 

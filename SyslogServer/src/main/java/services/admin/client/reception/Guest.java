@@ -1,6 +1,4 @@
 package services.admin.client.reception;
-
-import JDBC_Impl.admin.client.reception.GuestImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -17,8 +15,6 @@ import java.util.Map;
  * Created by root on 08.10.15.
  */
 public class Guest extends HttpServlet {
-    private final ApplicationContext appContext = new ClassPathXmlApplicationContext("JDBC_config.xml");
-    private final JDBC_Impl.admin.client.reception.GuestImpl DAO = (JDBC.admin.client.reception.Guest) appContext.getBean("guest");
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,19 +33,7 @@ public class Guest extends HttpServlet {
         String[] guest_id = (String[]) reqMap.get("guest_id");
 
 
-        Map<String, String> message = DAO.log(
-                host_ip[0],
-                host_mac[0],
-                login_name[0],
-                Integer.parseInt(login_id[0]),
-                Integer.parseInt(admin_type[0]),
-                Boolean.parseBoolean(result_type[0]),
-                Integer.parseInt(event_type[0]),
-                guest_name[0],
-                Integer.parseInt(card_id[0]),
-                Integer.parseInt(guest_id[0]),
-                Date.valueOf(datetime[0])
-        );
+        Map<String, String> message = null;
 
         PrintWriter out = response.getWriter();
         out.println(message.entrySet());

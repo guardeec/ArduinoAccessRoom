@@ -52,7 +52,7 @@ public class getGuestCard extends JdbcDaoSupport implements getGuestCardImpl {
                 Map<String, String> messageComponent = new HashMap<>();
                 messageComponent.put("id", Integer.toString(resultSet.getInt("guest_id")));
                 messageComponent.put("name", resultSet.getString("name"));
-                messageComponent.put("cardId", resultSet.getString("card_id"));
+                messageComponent.put("card_id", resultSet.getString("card_id"));
                 messageComponent.put("time_start", resultSet.getTime("time_start").toString());
                 messageComponent.put("time_end", resultSet.getTime("time_end").toString());
                 messageComponent.put("date", resultSet.getDate("date").toString());

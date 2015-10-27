@@ -35,9 +35,11 @@ public class changeGuestCard extends HttpServlet {
         if(adminTable.get("guestAdmin")) {
             String[] id = (String[]) reqMap.get("id");
             String[] name = (String[]) reqMap.get("name");
+            String[] cardNumber = (String[]) reqMap.get("cardNumber");
 
             message = guestDB.change(   Integer.parseInt(id[0]),
-                                        name[0]
+                                        name[0],
+                                        cardNumber[0].isEmpty() ? null : Integer.parseInt(cardNumber[0])
             );
         }else {
             message = new HashMap<>();

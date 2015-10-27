@@ -74,61 +74,61 @@
     <!--USER-->
     <servlet-mapping>
         <servlet-name>EnterOrOutTheSystem</servlet-name>
-        <url-pattern>userClient/enterOrOutTheSystemLog</url-pattern>
+        <url-pattern>/userClient/enterOrOutTheSystemLog</url-pattern>
     </servlet-mapping>
     <!--ARDUINO-->
     <servlet-mapping>
         <servlet-name>EnterOrOutTheRoom</servlet-name>
-        <url-pattern>arduinoClient/enterOrOutTheRoomLog</url-pattern>
+        <url-pattern>/arduinoClient/enterOrOutTheRoomLog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>InitialisationError</servlet-name>
-        <url-pattern>arduinoClient/initialisationErrorLog</url-pattern>
+        <url-pattern>/arduinoClient/initialisationErrorLog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AlarmInterOrOut</servlet-name>
-        <url-pattern>arduinoClient/alarmStatusLog</url-pattern>
+        <url-pattern>/arduinoClient/alarmStatusLog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>WorkError</servlet-name>
-        <url-pattern>arduinoClient/workErrorsLog</url-pattern>
+        <url-pattern>/arduinoClient/workErrorsLog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UnauthorizedAccess</servlet-name>
-        <url-pattern>arduinoClient/unauthorizedAccessLog</url-pattern>
+        <url-pattern>/arduinoClient/unauthorizedAccessLog</url-pattern>
     </servlet-mapping>
     <!--ADMIN-->
     <servlet-mapping>
         <servlet-name>EnterOrOutAdmin</servlet-name>
-        <url-pattern>adminClient/enterOrOutTheSessionLog</url-pattern>
+        <url-pattern>/adminClient/enterOrOutTheSessionLog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Device</servlet-name>
-        <url-pattern>adminClient/technical/deviceLog</url-pattern>
+        <url-pattern>/adminClient/technical/deviceLog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Guest</servlet-name>
-        <url-pattern>adminClient/reception/guestLog</url-pattern>
+        <url-pattern>/adminClient/reception/guestLog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Employee</servlet-name>
-        <url-pattern>adminClient/hr/employeeLog</url-pattern>
+        <url-pattern>/adminClient/hr/employeeLog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Role</servlet-name>
-        <url-pattern>adminClient/security/roleLog</url-pattern>
+        <url-pattern>/adminClient/security/roleLog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Right</servlet-name>
-        <url-pattern>adminClient/security/changeRightsLog</url-pattern>
+        <url-pattern>/adminClient/security/changeRightsLog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Card</servlet-name>
-        <url-pattern>adminClient/security/cardLog</url-pattern>
+        <url-pattern>/adminClient/security/cardLog</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Account</servlet-name>
-        <url-pattern>adminClient/security/accountLog</url-pattern>
+        <url-pattern>/adminClient/security/accountLog</url-pattern>
     </servlet-mapping>
 
 </web-app>

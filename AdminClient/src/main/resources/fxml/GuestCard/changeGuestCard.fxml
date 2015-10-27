@@ -13,23 +13,9 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Имя Гостя">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Text>
-                  <TextField fx:id="changeGuestName" prefWidth="200.0">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
-                     </VBox.margin>
-                  </TextField>
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID гостя">
                      <VBox.margin>
-                        <Insets left="10.0" right="10.0" />
+                        <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
                   <TextField fx:id="changeGuestId" prefWidth="200.0">
@@ -39,9 +25,34 @@
                   </TextField>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" />
-            <VBox prefHeight="200.0" prefWidth="100.0" />
-            <VBox prefHeight="200.0" prefWidth="100.0" />
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Имя Гостя">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="changeGuestName" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="76.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Номер карты">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="changeGuestCardNumber" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button alignment="CENTER" mnemonicParsing="false" onAction="#changeGuestCardChangeBtnAction" text="Изменить">

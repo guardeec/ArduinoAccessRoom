@@ -31,11 +31,13 @@ public class HttpRequest {
         try {
             conn = new java.net.URL( "http://"+httpAddress+"?"+message).openConnection();
             message = readStreamToString(conn.getInputStream(), "UTF-8");
+            System.out.println(message);
             output = HttpParse.parseHttp2Map(message);
         } catch (IOException e) {
             e.printStackTrace();
+            String a = e.getMessage();
             output = new HashMap<String, String>();
-            output.put("message", "Error No Connection");
+            output.put("message", "Error No Connection"+a);
         }
         return output;
     }

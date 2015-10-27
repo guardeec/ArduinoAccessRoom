@@ -13,7 +13,7 @@ public class Guest {
     private final SimpleStringProperty guestEnd;
     private final SimpleStringProperty guestDate;
 
-    public Guest(String guestId, String guestName, String guestStart, String guestEnd, String guestDate, String guestCardId) {
+    public Guest(String guestId, String guestName, String guestCardId, String guestStart, String guestEnd, String guestDate) {
         this.guestId = new SimpleStringProperty(guestId);
         this.guestName = new SimpleStringProperty(guestName);
         this.guestStart = new SimpleStringProperty(guestStart);
@@ -22,13 +22,8 @@ public class Guest {
         this.guestCardId = new SimpleStringProperty(guestCardId);
     }
 
-    public String getGuestCardId(){
-        return  guestCardId.get();
-    }
 
-    public SimpleStringProperty guestCardProperty(){
-        return guestCardId;
-    }
+
 
     public String getGuestId() {
         return guestId.get();
@@ -68,5 +63,13 @@ public class Guest {
 
     public SimpleStringProperty guestDateProperty() {
         return guestDate;
+    }
+
+    public String getGuestCardId() {
+        return guestCardId.get();
+    }
+
+    public SimpleStringProperty guestCardIdProperty() {
+        return guestCardId;
     }
 }

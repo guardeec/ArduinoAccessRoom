@@ -1,26 +1,38 @@
 package JDBC.arduino.client;
 
-import JDBC_Impl.arduino.client.UnauthorizedAccessImpl;
-import org.springframework.jdbc.CannotGetJdbcConnectionException;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
-
-import java.sql.Date;
+import JDBC.SyslogData;
+import JDBC_Impl.addLogDAO;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by root on 08.10.15.
  */
-public class UnauthorizedAccess extends JdbcDaoSupport implements UnauthorizedAccessImpl {
-    private Map<String, String> answer = new HashMap<String, String>();
+public class UnauthorizedAccess implements addLogDAO {
 
-    public Map<String, String> log(Integer device_id, String device_ip, Integer sensor_type, Integer event_type, Date datetime) {
-        try {
-            getJdbcTemplate().update("?", new Object[]{});
-            answer.put("message", "Success");
-        }catch (CannotGetJdbcConnectionException ex){
-            answer.put("message", "Error");
-        }
-        return answer;
+    public static Map<String, String> log(
+            String device_id,
+            String device_ip,
+            String device_mac,
+            String description,
+            String datetime
+    ) {
+        Map<String, String> sourceParams = new HashMap<>();
+        sourceParams.put("type_id", SyslogData.Source_Types.arduinoClient.toString());
+        sourceParams.put("ip", device_ip);
+        sourceParams.put("mac", device_mac);
+        sourceParams.put("device_id", device_id);
+        sourceParams.put("cl_acc_id", null);
+        sourceParams.put("cl_acc_l", null);
+
+        Map<String, String> eventGeneralParams = new HashMap<>();
+        eventGeneralParams.put("datetime", datetime);
+        eventGeneralParams.put("event_type_id", SyslogData.Event_Types.ard_unauth.toString());
+        eventGeneralParams.put("res_type", "true");
+        eventGeneralParams.put("descr", description);
+
+        Map<String, String> eventSpecificParams = new HashMap<>();
+
+        return DAO.log(sourceParams, eventGeneralParams, eventSpecificParams);
     }
 }

@@ -19,11 +19,14 @@ public class changeGuestCardController {
     private TextField changeGuestName;
     @FXML
     private TextField changeGuestId;
+    @FXML
+    private TextField changeGuestCardNumber;
 
     @FXML
     public void changeGuestCardChangeBtnAction(){
         String name = changeGuestName.getText();
         String id = changeGuestId.getText();
+        String cardNumber = changeGuestCardNumber.getText();
         if(name.isEmpty() || id.isEmpty()){
         }else {
             AdminType adminType = AdminType.getInstance();
@@ -33,6 +36,7 @@ public class changeGuestCardController {
                     +"&adminPassword="+adminPassword
                     +"&id="+id
                     +"&name="+name
+                    +"&cardNumber="+cardNumber
                     ;
             List<Map> result = httpRequest.makeInList(message, URL.changeGuest);
             Map<String, String> answer = result.get(result.size()-1);

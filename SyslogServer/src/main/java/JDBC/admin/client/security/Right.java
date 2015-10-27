@@ -1,26 +1,51 @@
 package JDBC.admin.client.security;
 
-import JDBC_Impl.admin.client.security.RightImpl;
-import org.springframework.jdbc.CannotGetJdbcConnectionException;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
-
-import java.sql.Date;
+import JDBC.SyslogData;
+import JDBC_Impl.addLogDAO;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by root on 08.10.15.
  */
-public class Right extends JdbcDaoSupport implements RightImpl {
-    private Map<String, String> answer = new HashMap<String, String>();
+public class Right implements addLogDAO {
 
-    public Map<String, String> log(String host_ip, String host_mac, String login_name, Integer login_id, Integer admin_type, Boolean result_type, Integer event_type, Integer device_id, Integer role_id, Boolean access_type, Date datetime) {
-        try {
-            getJdbcTemplate().update("?", new Object[]{});
-            answer.put("message", "Success");
-        }catch (CannotGetJdbcConnectionException ex){
-            answer.put("message", "Error");
-        }
-        return answer;
+    public static Map<String, String> log(
+            String host_ip,
+            String host_mac,
+            String login_name,
+            String login_id,
+            String result_type,
+            String event_type,
+            String device_id,
+            String device_spec,
+            String role_id,
+            String role_title,
+            String access_type,
+            String description,
+            String datetime
+    ) {
+        Map<String, String> sourceParams = new HashMap<>();
+        sourceParams.put("type_id", SyslogData.Source_Types.adminClient.toString());
+        sourceParams.put("ip", host_ip);
+        sourceParams.put("mac", host_mac);
+        sourceParams.put("device_id", null);
+        sourceParams.put("cl_acc_id", login_id);
+        sourceParams.put("cl_acc_l", login_name);
+
+        Map<String, String> eventGeneralParams = new HashMap<>();
+        eventGeneralParams.put("event_type_id", event_type);
+        eventGeneralParams.put("datetime", datetime);
+        eventGeneralParams.put("res_type", result_type);
+        eventGeneralParams.put("descr", description);
+
+        Map<String, String> eventSpecificParams = new HashMap<>();
+        eventSpecificParams.put("device_id", device_id);
+        eventSpecificParams.put("device_spec", device_spec);
+        eventSpecificParams.put("sys_r_id", role_id);
+        eventSpecificParams.put("sys_r_title", role_title);
+        eventSpecificParams.put("sys_r_access", access_type);
+
+        return DAO.log(sourceParams, eventGeneralParams, eventSpecificParams);
     }
 }

@@ -33,11 +33,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="AccessServer" target="1.5" />
-      <module name="AdminClient" target="1.5" />
-      <module name="ArduinoAccessRoom" target="1.5" />
-      <module name="ArduinoClient" target="1.5" />
-      <module name="SyslogServer" target="1.5" />
+      <module name="AccessServer" target="1.8" />
+      <module name="AdminClient" target="1.8" />
+      <module name="ArduinoAccessRoom" target="1.8" />
+      <module name="ArduinoClient" target="1.8" />
+      <module name="SyslogServer" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
