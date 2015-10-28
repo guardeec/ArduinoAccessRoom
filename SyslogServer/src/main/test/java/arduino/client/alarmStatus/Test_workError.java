@@ -13,9 +13,5 @@ import java.util.Map;
 public class Test_workError {
     //@Test
     public void test_workError(){
-        Map<String, String> answer = arduinoClientMethods.workErrorLog("test_id", "test_ip", "2", "", new Date(System.currentTimeMillis()).toString());
-        if (!answer.get("message").contains("Success")){
-            Assert.fail(this.getClass().getName());
-        }
     }
 }

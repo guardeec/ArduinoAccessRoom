@@ -13,9 +13,5 @@ import java.util.Map;
 public class Test_addGuest {
     //@Test
     public void test_addGuest(){
-        Map<String, String> answer = adminClientMethods.guestLog("test_ip", "test_mac", "test_login", "test_id", "1", "test_name", "test_id", "test_id", new Date(System.currentTimeMillis()).toString(), "0");
-        if (!answer.get("message").contains("Success")){
-            Assert.fail(this.getClass().getName());
-        }
     }
 }

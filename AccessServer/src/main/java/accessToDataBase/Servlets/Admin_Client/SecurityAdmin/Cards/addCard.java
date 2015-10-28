@@ -2,7 +2,6 @@ package accessToDataBase.Servlets.Admin_Client.SecurityAdmin.Cards;
 
 import accessToDataBase.JDBC.Admin.SecurityAdmin.Cards.addCardImpl;
 import accessToDataBase.JDBC.Authorisation.getAdminTypeImpl;
-import accessToDataBase.salt;
 import log.adminClientMethods;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

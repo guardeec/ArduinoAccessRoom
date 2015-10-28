@@ -14,43 +14,5 @@ import java.util.Map;
 public class Test_deleteRole {
     @Test
     public void test_deleteRole(){
-        /*
-            String host_ip,
-            String host_mac,
-
-            String login_name,
-            String login_id,
-
-            String result_type,
-
-            String role_id,
-            String role_title,
-
-            String datetime,
-
-            String event_type,
-            String description
-         */
-
-        Map<String, String> answer = adminClientMethods.roleLog(
-                "",
-                "",
-
-                "L",
-                "1",
-
-                "true",
-
-                "1",
-                "employee",
-
-                Date.valueOf(LocalDate.now()).toString(),
-
-                "delete",
-                "Test_is_Test"
-        );
-        if (!answer.get("message").contains("Success")){
-            Assert.fail(this.getClass().getName());
-        }
     }
 }

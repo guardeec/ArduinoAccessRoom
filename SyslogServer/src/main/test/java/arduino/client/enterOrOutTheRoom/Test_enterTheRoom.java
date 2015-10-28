@@ -14,46 +14,5 @@ import java.util.Map;
 public class Test_enterTheRoom {
     @Test
     public void test_enterTheRoom(){
-        /*
-            String device_id,
-            String device_ip,
-
-            String user_id,
-            String user_name,
-
-            String card_id,
-            String user_type ,
-
-            String result_type,
-
-            String datetime,
-            String event_type,
-
-            String device_mac,
-            String user_type_id,
-            String description
-         */
-        Map<String, String> answer = arduinoClientMethods.enterOrOutTheRoomLog(
-                "1",
-                "",
-
-                "1",
-                "T",
-
-                "1",
-                "admin",
-
-                "true",
-
-                Date.valueOf(LocalDate.now()).toString(),
-                "login",
-
-                "",
-                "1",
-                "This_is_Test"
-        );
-        if (!answer.get("message").contains("Success")){
-            Assert.fail(this.getClass().getName());
-        }
     }
 }

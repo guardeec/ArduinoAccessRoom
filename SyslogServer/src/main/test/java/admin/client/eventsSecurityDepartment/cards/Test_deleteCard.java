@@ -13,40 +13,5 @@ import java.util.Map;
 public class Test_deleteCard {
     @Test
     public void test_deleteCard(){
-        /*
-            String host_ip,
-            String host_mac,
-
-            String login_name,
-            String login_id,
-
-            String result_type,
-
-            String card_id,
-
-            String datetime,
-
-            String event_type,
-            String description
-         */
-        Map<String, String> answer = adminClientMethods.cardLog(
-                "",
-                "",
-
-                "L",
-                "1",
-
-                "true",
-
-                "1",
-
-                java.sql.Date.valueOf(LocalDate.now()).toString(),
-
-                "delete",
-                "This_is_Test"
-        );
-        if (!answer.get("message").contains("Success")){
-            Assert.fail(this.getClass().getName());
-        }
     }
 }

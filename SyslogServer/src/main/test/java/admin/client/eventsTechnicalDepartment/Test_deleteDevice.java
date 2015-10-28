@@ -10,10 +10,5 @@ import org.junit.Test;
 public class Test_deleteDevice {
     //@Test
     public void test_deleteDevice(){
-        /*
-        Map<String, String> answer = adminClientMethods.deviceLog("test_ip", "test_mac", "test_login", "test_id", "1", "", "", "test_id", new Date(System.currentTimeMillis()).toString(), "2");
-        if (!answer.get("message").contains("Success")){
-            Assert.fail(this.getClass().getName());
-        }*/
     }
 }

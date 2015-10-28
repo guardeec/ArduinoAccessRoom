@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="dataSourceLog" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+              <!-- getAccess -->
+              <property name="driverClass" value="org.postgresql.Driver" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Syslog_DB_Server" />
+              <property name="user" value="postgres" />
+              <property name="password" value="admin" />
+              <!-- pool sizing -->
+              <property name="initialPoolSize" value="6" />
+              <property name="minPoolSize" value="6" />
+              <property name="maxPoolSize" value="10000" />
+              <property name="acquireIncrement" value="3" />
+              <property name="maxStatements" value="0" />
+              <!-- retries -->
+              <property name="acquireRetryAttempts" value="30" />
+              <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
+              <property name="breakAfterAcquireFailure" value="false" />
+              <!-- refreshing connections -->
+              <property name="maxIdleTime" value="180" /> <!-- 3min -->
+              <property name="maxConnectionAge" value="10" /> <!-- 1h -->
+              <!-- timeouts and testing -->
+              <property name="checkoutTimeout" value="5000" /> <!-- 5s -->
+              <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
+              <property name="testConnectionOnCheckout" value="true" />
+              <property name="preferredTestQuery" value="SELECT 1" />
+              <property name="testConnectionOnCheckin" value="true" />
+       </bean>
+
+       <bean id="general_addLog" class="JDBC.General">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="employee_addLog" class="JDBC.admin.client.hr.Employee">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="guest_addLog" class="JDBC.admin.client.reception.Guest">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="account_addLog" class="JDBC.admin.client.security.Account">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="card_addLog" class="JDBC.admin.client.security.Card">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="right_addLog" class="JDBC.admin.client.security.Right">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="role_addLog" class="JDBC.admin.client.security.Role">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="device_addLog" class="JDBC.admin.client.technical.Device">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="enterOrOutAdmin_addLog" class="JDBC.admin.client.EnterOrOutAdmin">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+
+       <bean id="enterOrOutTheRoom_addLog" class="JDBC.arduino.client.EnterOrOutTheRoom">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="localError" class="JDBC.arduino.client.LocalError">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="unauthorizedAccess" class="JDBC.arduino.client.UnauthorizedAccess">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="connectionError_addLog" class="JDBC.arduino.client.ConnectionError">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+
+       <bean id="enterOrOutTheSystem_addLog" class="JDBC.user.client.EnterOrOutTheSystem">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+
+
+</beans>
