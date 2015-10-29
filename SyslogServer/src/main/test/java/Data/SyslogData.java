@@ -24,7 +24,7 @@ import java.util.Calendar;
  * Created by root on 29.10.15.
  */
 public class SyslogData {
-    public static final String URL_SYSLOG = "http://192.168.1.96:8080/SyslogServer/addLog";
+    public static final String URL_SYSLOG = "http://localhost:8080/addLog";
 
     private static EmployeeDATA employeeDATA = new EmployeeDATA();
     private static GuestDATA guestDATA = new GuestDATA();
@@ -62,7 +62,7 @@ public class SyslogData {
 
     public static GuestDATA getGuestDATA() {
         guestDATA = (GuestDATA) setGeneralAndSourceParams(guestDATA);
-        guestDATA.setSpecificParams(0, "ghost", 0, Date.valueOf(LocalDate.now().toString()), Date.valueOf(LocalDate.now().toString()));
+        guestDATA.setSpecificParams(0, "ghost", 0, null, null);
         guestDATA.setGeneral_event_type_id(JDBC.SyslogData.Event_Types.rec_dep.create);
         guestDATA.setSource_type_id(JDBC.SyslogData.Source_Types.adminClient);
         return guestDATA;

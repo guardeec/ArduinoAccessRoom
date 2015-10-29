@@ -43,6 +43,7 @@ public class addLog extends HttpServlet {
             EmployeeDATA employee = gson.fromJson(object, EmployeeDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(employee);
             if (!object.contains("Error")){
+                employee.setGeneral_event_type_id(Integer.parseInt(object));
                 object = Spring_DAO.EMPLOYEE_DAO.log(employee);
             }
         }
@@ -50,6 +51,7 @@ public class addLog extends HttpServlet {
             GuestDATA guest = gson.fromJson(object, GuestDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(guest);
             if (!object.contains("Error")){
+                guest.setGeneral_event_type_id(Integer.parseInt(object));
                 object = Spring_DAO.GUEST_DAO.log(guest);
             }
         }
@@ -57,6 +59,7 @@ public class addLog extends HttpServlet {
             AccountDATA account = gson.fromJson(object, AccountDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(account);
             if (!object.contains("Error")){
+                account.setGeneral_event_type_id(Integer.parseInt(object));
                 object = Spring_DAO.ACCOUNT_DAO.log(account);
             }
         }
@@ -64,6 +67,7 @@ public class addLog extends HttpServlet {
             CardDATA card = gson.fromJson(object, CardDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(card);
             if (!object.contains("Error")){
+                card.setGeneral_event_type_id(Integer.parseInt(object));
                 object = Spring_DAO.CARD_DAO.log(card);
             }
         }
@@ -71,6 +75,7 @@ public class addLog extends HttpServlet {
             RightDATA right = gson.fromJson(object, RightDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(right);
             if (!object.contains("Error")){
+                right.setGeneral_event_type_id(Integer.parseInt(object));
                 object = Spring_DAO.RIGHT_DAO.log(right);
             }
         }
@@ -78,6 +83,7 @@ public class addLog extends HttpServlet {
             RoleDATA role = gson.fromJson(object, RoleDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(role);
             if (!object.contains("Error")){
+                role.setGeneral_event_type_id(Integer.parseInt(object));
                 object = Spring_DAO.ROLE_DAO.log(role);
             }
         }
@@ -85,6 +91,7 @@ public class addLog extends HttpServlet {
             DeviceDATA device = gson.fromJson(object, DeviceDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(device);
             if (!object.contains("Error")){
+                device.setGeneral_event_type_id(Integer.parseInt(object));
                 object = Spring_DAO.DEVICE_DAO.log(device);
             }
         }
@@ -92,6 +99,7 @@ public class addLog extends HttpServlet {
             AdminClientSessionDATA session = gson.fromJson(object, AdminClientSessionDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(session);
             if (!object.contains("Error")){
+                session.setGeneral_event_type_id(Integer.parseInt(object));
                 object = Spring_DAO.ENTER_OR_OUT_ADMIN_DAO.log(session);
             }
         }
@@ -102,22 +110,31 @@ public class addLog extends HttpServlet {
         if (objectType.compareTo(LocalErrorDATA.class.getName())==0){
             LocalErrorDATA localError = gson.fromJson(object, LocalErrorDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(localError);
+            if (!object.contains("Error")){
+                object="Success";
+            }
         }
         if (objectType.compareTo(ConnectionErrorDATA.class.getName())==0){
             ConnectionErrorDATA connectionError = gson.fromJson(object, ConnectionErrorDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(connectionError);
-            System.out.println("RRRRRRRRR:   "+object);
+            if (!object.contains("Error")){
+                object="Success";
+            }
         }
         if (objectType.compareTo(RoomDATA.class.getName())==0){
             RoomDATA room = gson.fromJson(object, RoomDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(room);
             if (!object.contains("Error")){
+                room.setGeneral_event_type_id(Integer.parseInt(object));
                 object = Spring_DAO.ENTER_OT_OUT_THE_ROOM_DAO.log(room);
             }
         }
         if (objectType.compareTo(UnuathorizedAccessDATA.class.getName())==0){
             UnuathorizedAccessDATA fail = gson.fromJson(object, UnuathorizedAccessDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(fail);
+            if (!object.contains("Error")){
+                object="Success";
+            }
         }
 
         /*
@@ -127,6 +144,7 @@ public class addLog extends HttpServlet {
             UserClientSessionDATA session = gson.fromJson(object, UserClientSessionDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(session);
             if (!object.contains("Error")){
+                session.setGeneral_event_type_id(Integer.parseInt(object));
                 object = Spring_DAO.ENTER_OR_OUT_THE_SYSTEM_DAO.log(session);
             }
         }

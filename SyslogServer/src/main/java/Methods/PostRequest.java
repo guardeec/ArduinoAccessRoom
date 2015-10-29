@@ -87,7 +87,7 @@ public class PostRequest {
             //считываем ответ: статус транзакции в хэдере
             System.out.println(conn.getResponseMessage());
 
-            System.out.println(conn.getHeaderField("Status"));
+            System.out.println("RES:   "+conn.getHeaderField("Status"));
             return conn.getHeaderField("Status");
         } catch (IOException e) {
             e.printStackTrace();

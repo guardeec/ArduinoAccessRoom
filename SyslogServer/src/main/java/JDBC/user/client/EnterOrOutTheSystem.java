@@ -17,7 +17,7 @@ public class EnterOrOutTheSystem extends JdbcDaoSupport implements EnterOtOutThe
     public String log(UserClientSessionDATA userClientSession) {
         try{
             getJdbcTemplate().update(
-                    "INSERT INTO host_ag_events (event_id, empl_id, empl_name, os_acc_id, os_acc_l) VALUES (?, ?, ?, ?, ?, ?);",
+                    "INSERT INTO host_ag_events (event_id, empl_id, empl_name, os_acc_id, os_acc_l) VALUES (?, ?, ?, ?, ?);",
                     new Object[]{
                             userClientSession.getGeneral_event_type_id(),
                             userClientSession.getEmpl_id(),

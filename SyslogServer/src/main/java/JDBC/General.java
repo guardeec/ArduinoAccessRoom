@@ -57,8 +57,9 @@ public class General extends JdbcDaoSupport implements GeneralImpl {
         /*
         Заносим общие параметры события
          */
+        Integer event_id;
         try{
-            getJdbcTemplate().update(
+            event_id = getJdbcTemplate().queryForInt(
                     "INSERT INTO events (type_id, source_id, date_time, res_type, descr) VALUES (?, ?, ?, ?, ?) RETURNING id AS event_id;",
                     new Object[]{
                             object.getGeneral_event_type_id(),
@@ -72,6 +73,6 @@ public class General extends JdbcDaoSupport implements GeneralImpl {
             return "Error";
         }
 
-        return "Success";
+        return event_id.toString();
     }
 }

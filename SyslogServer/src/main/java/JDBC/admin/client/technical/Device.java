@@ -19,7 +19,7 @@ public class Device extends JdbcDaoSupport implements DeviceImpl {
     public String log(DeviceDATA device) {
         try{
             getJdbcTemplate().update(
-                    "TECHNICAL DEPARTMENT EVENTS INSERT INTO tech_dep_events (event_id, device_id, device_ip, device_mac, device_spec, device_st_cond, device_st_descr)VALUES (?, ?, ?, ?, ?, ?, ?);",
+                    "INSERT INTO tech_dep_events (event_id, device_id, device_ip, device_mac, device_spec, device_st_cond, device_st_descr)VALUES (?, ?, ?, ?, ?, ?, ?);",
                     new Object[]{
                             device.getGeneral_event_type_id(),
                             device.getDevice_id(),
