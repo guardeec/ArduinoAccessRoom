@@ -2,15 +2,13 @@ package Methods;
 
 import Methods.POJO.PojoObject;
 import com.google.gson.Gson;
-import com.sun.istack.internal.NotNull;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 /**
@@ -58,4 +56,42 @@ public class PostRequest {
         }
     }
 
+    public static String makeHeader(PojoObject object, String URL){
+        //формируем json и заголовок по которому класс json объекта
+        Gson gson = new Gson();
+        String json = gson.toJson(object, object.getClass());
+        String classType = object.getClass().getName();
+
+        try {
+            //устанавливаем соединение
+            URL url = new URL(URL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setReadTimeout(10000);
+            conn.setConnectTimeout(15000);
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            System.out.println(json);
+
+            //передаём заголовок как хэдер, а json как сообщение
+            conn.setRequestProperty("ObjectType", classType);
+            OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
+
+            writer.write(json);
+            writer.flush();
+
+            //закрываем соединение
+            conn.disconnect();
+
+            //считываем ответ: статус транзакции в хэдере
+            System.out.println(conn.getResponseMessage());
+
+            System.out.println(conn.getHeaderField("Status"));
+            return conn.getHeaderField("Status");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "FAIL";
+        }
+    }
 }

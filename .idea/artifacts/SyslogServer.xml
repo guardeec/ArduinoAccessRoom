@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="SyslogServer">
+  <artifact type="war" name="SyslogServer">
     <output-path>$PROJECT_DIR$/out/artifacts/SyslogServer</output-path>
-    <root id="root">
+    <root id="archive" name="SyslogServer.war">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="SyslogServer" />
@@ -19,6 +19,7 @@
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.1.6.RELEASE" />
+          <element id="library" level="project" name="com.google.code.gson:gson:2.4" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="SyslogServer/web/Web" />

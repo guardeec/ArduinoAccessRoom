@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Created by root on 28.10.15.
@@ -29,9 +30,12 @@ public class addLog extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String object = req.getReader().readLine();
-        String objectType = req.getHeader("objectType");
+        String objectType = req.getHeader("ObjectType");
         Gson gson = new Gson();
 
+        System.out.println("------------------------------------------");
+        System.out.println(object);
+        System.out.println(objectType);
         /*
         Admin Client
          */
@@ -102,6 +106,7 @@ public class addLog extends HttpServlet {
         if (objectType.compareTo(ConnectionErrorDATA.class.getName())==0){
             ConnectionErrorDATA connectionError = gson.fromJson(object, ConnectionErrorDATA.class);
             object = Spring_DAO.GENERAL_DAO.log(connectionError);
+            System.out.println("RRRRRRRRR:   "+object);
         }
         if (objectType.compareTo(RoomDATA.class.getName())==0){
             RoomDATA room = gson.fromJson(object, RoomDATA.class);
@@ -130,9 +135,9 @@ public class addLog extends HttpServlet {
         Ответ
          */
         if (object.contains("Success")){
-            resp.addHeader("TransactionStatus", "OK");
+            resp.addHeader("Status", "OK");
         }else {
-            resp.addHeader("TransactionStatus", "FAIL");
+            resp.addHeader("Status", "FAIL");
         }
     }
 }

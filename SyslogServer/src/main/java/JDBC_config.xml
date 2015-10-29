@@ -10,20 +10,20 @@
               <property name="user" value="postgres" />
               <property name="password" value="admin" />
               <!-- pool sizing -->
-              <property name="initialPoolSize" value="6" />
-              <property name="minPoolSize" value="6" />
+              <property name="initialPoolSize" value="100" />
+              <property name="minPoolSize" value="10" />
               <property name="maxPoolSize" value="10000" />
-              <property name="acquireIncrement" value="3" />
+              <property name="acquireIncrement" value="2" />
               <property name="maxStatements" value="0" />
               <!-- retries -->
               <property name="acquireRetryAttempts" value="30" />
               <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
               <property name="breakAfterAcquireFailure" value="false" />
               <!-- refreshing connections -->
-              <property name="maxIdleTime" value="180" /> <!-- 3min -->
+              <property name="maxIdleTime" value="60" /> <!-- 1min -->
               <property name="maxConnectionAge" value="10" /> <!-- 1h -->
               <!-- timeouts and testing -->
-              <property name="checkoutTimeout" value="5000" /> <!-- 5s -->
+              <property name="checkoutTimeout" value="1000" /> <!-- 1s -->
               <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
               <property name="testConnectionOnCheckout" value="true" />
               <property name="preferredTestQuery" value="SELECT 1" />
