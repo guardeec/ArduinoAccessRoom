@@ -6,6 +6,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
+import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
@@ -64,7 +65,7 @@ public class General extends JdbcDaoSupport implements GeneralImpl {
                     new Object[]{
                             object.getGeneral_event_type_id(),
                             source_id,
-                            object.getGeneral_datetime(),
+                            new Timestamp(object.getGeneral_datetime()),
                             object.getGeneral_res_type(),
                             object.getGeneral_description()
                     }

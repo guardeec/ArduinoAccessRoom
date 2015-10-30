@@ -43,7 +43,8 @@ public class SyslogData {
     private static UserClientSessionDATA userClientSessionDATA = new UserClientSessionDATA();
 
     private static PojoObject setGeneralAndSourceParams(PojoObject object){
-        object.setGeneralParams(null,null,true,"THIS IS TEST");
+        java.util.Date date = new java.util.Date();
+        object.setGeneralParams(null,date.getTime(),true,"THIS IS TEST");
         object.setSourceParams(null, "ip","mac",null,null,null);
         return object;
     }
@@ -61,8 +62,9 @@ public class SyslogData {
     }
 
     public static GuestDATA getGuestDATA() {
+        java.util.Date date = new java.util.Date();
         guestDATA = (GuestDATA) setGeneralAndSourceParams(guestDATA);
-        guestDATA.setSpecificParams(0, "ghost", 0, null, null);
+        guestDATA.setSpecificParams(0, "ghost", 0, date.getTime(), date.getTime());
         guestDATA.setGeneral_event_type_id(JDBC.SyslogData.Event_Types.rec_dep.create);
         guestDATA.setSource_type_id(JDBC.SyslogData.Source_Types.adminClient);
         return guestDATA;

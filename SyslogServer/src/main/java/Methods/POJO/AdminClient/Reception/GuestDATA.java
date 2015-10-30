@@ -11,10 +11,10 @@ public class GuestDATA extends GeneralParams {
     private Integer guest_id;
     private String guest_name;
     private Integer card_id;
-    private Date time_start;
-    private Date time_end;
+    private Long time_start;
+    private Long time_end;
 
-    public void setSpecificParams(Integer guest_id, String guest_name, Integer card_id, Date time_start, Date time_end) {
+    public void setSpecificParams(Integer guest_id, String guest_name, Integer card_id, Long time_start, Long time_end) {
         this.guest_id = guest_id;
         this.guest_name = guest_name;
         this.card_id = card_id;
@@ -46,19 +46,19 @@ public class GuestDATA extends GeneralParams {
         this.card_id = card_id;
     }
 
-    public Date getTime_start() {
+    public Long getTime_start() {
         return time_start;
     }
 
-    public void setTime_start(Date time_start) {
+    public void setTime_start(Long time_start) {
         this.time_start = time_start;
     }
 
-    public Date getTime_end() {
+    public Long getTime_end() {
         return time_end;
     }
 
-    public void setTime_end(Date time_end) {
+    public void setTime_end(Long time_end) {
         this.time_end = time_end;
     }
 }

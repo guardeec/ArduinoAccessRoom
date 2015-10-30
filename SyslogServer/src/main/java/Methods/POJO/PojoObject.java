@@ -10,7 +10,7 @@ public interface PojoObject {
     //это маркер для сериализации в json в методе класса PostRequest
     public void setSourceParams(Integer type_id, String ip, String mac, Integer device_id, Integer cl_acc_id, String cl_acc_l);
 
-    public void setGeneralParams(Integer event_type_id, Date datetime, Boolean res_type, String description);
+    public void setGeneralParams(Integer event_type_id, Long datetime, Boolean res_type, String description);
 
     public Integer getSource_type_id();
 
@@ -40,9 +40,9 @@ public interface PojoObject {
 
     public void setGeneral_event_type_id(Integer general_event_type_id);
 
-    public Date getGeneral_datetime();
+    public Long getGeneral_datetime();
 
-    public void setGeneral_datetime(Date general_datetime);
+    public void setGeneral_datetime(Long general_datetime);
 
     public Boolean getGeneral_res_type();
 

@@ -7,6 +7,7 @@ import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,8 +26,8 @@ public class Guest extends JdbcDaoSupport implements GuestImpl {
                             guest.getGuest_id(),
                             guest.getGuest_name(),
                             guest.getCard_id(),
-                            guest.getTime_start(),
-                            guest.getTime_end()
+                            new Timestamp(guest.getTime_start()),
+                            new Timestamp(guest.getTime_end())
                     }
             );
             return "Success";

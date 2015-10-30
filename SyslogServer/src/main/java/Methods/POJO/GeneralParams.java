@@ -16,7 +16,7 @@ public abstract class GeneralParams implements PojoObject {
 
     //generalParams
     private Integer general_event_type_id;
-    private Date general_datetime;
+    private Long general_datetime;
     private Boolean general_res_type;
     private String general_description;
 
@@ -29,7 +29,7 @@ public abstract class GeneralParams implements PojoObject {
         setSource_cl_acc_l(cl_acc_l);
     }
 
-    public void setGeneralParams(Integer event_type_id, Date datetime, Boolean res_type, String description){
+    public void setGeneralParams(Integer event_type_id, Long datetime, Boolean res_type, String description){
         setGeneral_event_type_id(event_type_id);
         setGeneral_datetime(datetime);
         setGeneral_res_type(res_type);
@@ -92,14 +92,6 @@ public abstract class GeneralParams implements PojoObject {
         this.general_event_type_id = general_event_type_id;
     }
 
-    public Date getGeneral_datetime() {
-        return general_datetime;
-    }
-
-    public void setGeneral_datetime(Date general_datetime) {
-        this.general_datetime = general_datetime;
-    }
-
     public Boolean getGeneral_res_type() {
         return general_res_type;
     }
@@ -114,5 +106,13 @@ public abstract class GeneralParams implements PojoObject {
 
     public void setGeneral_description(String general_description) {
         this.general_description = general_description;
+    }
+
+    public Long getGeneral_datetime() {
+        return general_datetime;
+    }
+
+    public void setGeneral_datetime(Long general_datetime) {
+        this.general_datetime = general_datetime;
     }
 }
