@@ -15,16 +15,11 @@ import Methods.POJO.ArduinoClient.UnuathorizedAccessDATA;
 import Methods.POJO.PojoObject;
 import Methods.POJO.UserClient.UserClientSessionDATA;
 
-import java.net.Inet4Address;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.Calendar;
-
 /**
  * Created by root on 29.10.15.
  */
 public class SyslogData {
-    public static final String URL_SYSLOG = "http://localhost:8080/addLog";
+    public static final String URL_SYSLOG = "http://192.168.1.96:8080/SyslogServer/addLog";
 
     private static EmployeeDATA employeeDATA = new EmployeeDATA();
     private static GuestDATA guestDATA = new GuestDATA();
