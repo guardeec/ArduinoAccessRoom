@@ -34,7 +34,7 @@
         <servlet-name>cashAdminDB</servlet-name>
         <servlet-class>accessToDataBase.Servlets.Arduino_Client.cashAdminDB</servlet-class>
     </servlet>
-    <!-- DeviceAdmin -->
+    <!-- Technical -->
     <servlet>
         <servlet-name>addDevice</servlet-name>
         <servlet-class>accessToDataBase.Servlets.Admin_Client.DeviceAdmin.addDevice</servlet-class>
@@ -49,7 +49,7 @@
     </servlet>
     <servlet>
         <servlet-name>getDevice</servlet-name>
-        <servlet-class>accessToDataBase.Servlets.Admin_Client.DeviceAdmin.getDevice</servlet-class>
+        <servlet-class>accessToDataBase.Servlets.Admin_Client.DeviceAdmin.Device</servlet-class>
     </servlet>
     <!-- guestCardAdmin -->
     <servlet>
@@ -195,7 +195,7 @@
         <servlet-name>cashAdminDB</servlet-name>
         <url-pattern>/cashAdminDB</url-pattern>
     </servlet-mapping>
-    <!-- DeviceAdmin -->
+    <!-- Technical -->
     <servlet-mapping>
         <servlet-name>addDevice</servlet-name>
         <url-pattern>/deviceAdmin/addDevice</url-pattern>

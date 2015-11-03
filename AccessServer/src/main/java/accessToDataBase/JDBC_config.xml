@@ -36,7 +36,7 @@
               <property name="preferredTestQuery" value="SELECT 1" />
               <property name="testConnectionOnCheckin" value="true" />
        </bean>
-       <!-- DeviceAdmin Pool -->
+       <!-- Technical Pool -->
        <bean id="dataSourceDeviceAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
@@ -181,148 +181,73 @@
        <!--                        -->
        <!--       Arduino Beans    -->
        <!--                        -->
-       <bean id="getAccess" class="accessToDataBase.JDBC.Arduino.getAccess">
+       <bean id="getAccess" class="accessToDataBase.JDBC.arduino.client.GetAccess">
               <property name="dataSource" ref="dataSourceArduino" />
        </bean>
-       <bean id="cashAdminDB" class="accessToDataBase.JDBC.Arduino.cashAdminDB">
+       <bean id="cashAdminDB" class="accessToDataBase.JDBC.arduino.client.CashAdminDB">
+              <property name="dataSource" ref="dataSourceArduino" />
+       </bean>
+       <bean id="connectionStatus" class="accessToDataBase.JDBC.arduino.client.ConnectionStatus">
               <property name="dataSource" ref="dataSourceArduino" />
        </bean>
 
 
-
        <!--                        -->
-       <!--   DeviceAdmin Beans    -->
+       <!--   Technical Beans    -->
        <!--                        -->
-       <bean id="addDeviceAdmin" class="accessToDataBase.JDBC.Admin.DeviceAdmin.addDevice">
+       <bean id="device" class="accessToDataBase.JDBC.admin.client.Technical.Device">
               <property name="dataSource" ref="dataSourceDeviceAdmin" />
        </bean>
-       <bean id="changeDeviceAdmin" class="accessToDataBase.JDBC.Admin.DeviceAdmin.changeDevice">
+       <bean id="technicalHepler" class="accessToDataBase.JDBC.admin.client.Technical.TechnicalHepler">
               <property name="dataSource" ref="dataSourceDeviceAdmin" />
        </bean>
-       <bean id="deleteDeviceAdmin" class="accessToDataBase.JDBC.Admin.DeviceAdmin.deleteDevice">
-              <property name="dataSource" ref="dataSourceDeviceAdmin" />
+       <!--                        -->
+       <!--  Reception Beans  -->
+       <!--                        -->
+       <bean id="guest" class="accessToDataBase.JDBC.admin.client.Reception.Guest">
+              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
        </bean>
-       <bean id="getDeviceAdmin" class="accessToDataBase.JDBC.Admin.DeviceAdmin.getDevice">
-              <property name="dataSource" ref="dataSourceDeviceAdmin" />
+       <bean id="expiredCards" class="accessToDataBase.JDBC.admin.client.Reception.ExpiredCards">
+              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
        </bean>
-
-
+       <bean id="receptionHelper" class="accessToDataBase.JDBC.admin.client.Reception.ReceptionHelper">
+              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
+       </bean>
 
        <!--                        -->
-       <!--  GuestCardAdmin Beans  -->
+       <!--     HR Beans    -->
        <!--                        -->
-       <bean id="addGuestAdmin" class="accessToDataBase.JDBC.Admin.GuestCardAdmin.addGuest">
-              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
+       <bean id="employer" class="accessToDataBase.JDBC.admin.client.HR.Employee">
+              <property name="dataSource" ref="dataSourceUserAdmin" />
        </bean>
-       <bean id="addToCardGuestAdmin" class="accessToDataBase.JDBC.Admin.GuestCardAdmin.addGuestToCard">
-              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
+       <bean id="hrHelper" class="accessToDataBase.JDBC.admin.client.HR.HRHelper">
+              <property name="dataSource" ref="dataSourceUserAdmin" />
        </bean>
-       <bean id="changeGuestAdmin" class="accessToDataBase.JDBC.Admin.GuestCardAdmin.changeGuestCard">
-              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
-       </bean>
-       <bean id="checkFreeCardsGuestAdmin" class="accessToDataBase.JDBC.Admin.GuestCardAdmin.checkFreeCards">
-              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
-       </bean>
-       <bean id="deleteExpiredCardsGuestAdmin" class="accessToDataBase.JDBC.Admin.GuestCardAdmin.deleteExpiredCards">
-              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
-       </bean>
-       <bean id="deleteGuestAdmin" class="accessToDataBase.JDBC.Admin.GuestCardAdmin.deleteGuestCard">
-              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
-       </bean>
-       <bean id="getGuestAdmin" class="accessToDataBase.JDBC.Admin.GuestCardAdmin.getGuestCard">
-              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
-       </bean>
-       <bean id="getGuestHistoryAdmin" class="accessToDataBase.JDBC.Admin.GuestCardAdmin.getGuestCardHistoty">
-              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
-       </bean>
-
-
-
        <!--                        -->
-       <!--     UserAdmin Beans    -->
+       <!--  Security Beans   -->
        <!--                        -->
-       <bean id="addUserAdmin" class="accessToDataBase.JDBC.Admin.UserAdmin.addUser">
-              <property name="dataSource" ref="dataSourceUserAdmin" />
-       </bean>
-       <bean id="addUserToCardAdmin" class="accessToDataBase.JDBC.Admin.UserAdmin.addUserToCard">
-              <property name="dataSource" ref="dataSourceUserAdmin" />
-       </bean>
-       <bean id="changeUserAdmin" class="accessToDataBase.JDBC.Admin.UserAdmin.changeUser">
-              <property name="dataSource" ref="dataSourceUserAdmin" />
-       </bean>
-       <bean id="checkFreeCardsUserAdmin" class="accessToDataBase.JDBC.Admin.UserAdmin.checkFreeCards">
-              <property name="dataSource" ref="dataSourceUserAdmin" />
-       </bean>
-       <bean id="deleteUserAdmin" class="accessToDataBase.JDBC.Admin.UserAdmin.deleteUser">
-              <property name="dataSource" ref="dataSourceUserAdmin" />
-       </bean>
-       <bean id="getRolesUserAdmin" class="accessToDataBase.JDBC.Admin.UserAdmin.getRoles">
-              <property name="dataSource" ref="dataSourceUserAdmin" />
-       </bean>
-       <bean id="getUserAdmin" class="accessToDataBase.JDBC.Admin.UserAdmin.getUser">
-              <property name="dataSource" ref="dataSourceUserAdmin" />
-       </bean>
-
-
-
-       <!--                        -->
-       <!--  SecurityAdmin Beans   -->
-       <!--                        -->
-       <bean id="addCardSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Cards.addCard">
+       <bean id="account" class="accessToDataBase.JDBC.admin.client.Security.Account">
               <property name="dataSource" ref="dataSourceSecurityAdmin" />
        </bean>
-       <bean id="deleteCardSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Cards.deleteCard">
+       <bean id="cards" class="accessToDataBase.JDBC.admin.client.Security.Cards">
               <property name="dataSource" ref="dataSourceSecurityAdmin" />
        </bean>
-       <bean id="getCardSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Cards.getCard">
+       <bean id="rights" class="accessToDataBase.JDBC.admin.client.Security.Rights">
               <property name="dataSource" ref="dataSourceSecurityAdmin" />
        </bean>
-       <bean id="getDeviceSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Devices.getDevice">
+       <bean id="roles" class="accessToDataBase.JDBC.admin.client.Security.Roles">
               <property name="dataSource" ref="dataSourceSecurityAdmin" />
        </bean>
-       <bean id="changePolicyOnDeviceSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Policy.changePolicyOnDevice">
+       <bean id="securityHelper" class="accessToDataBase.JDBC.admin.client.Security.SecurityHelper">
               <property name="dataSource" ref="dataSourceSecurityAdmin" />
        </bean>
-       <bean id="getPolicySecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Policy.getPolicy">
-              <property name="dataSource" ref="dataSourceSecurityAdmin" />
-       </bean>
-       <bean id="getPolicyOnDeviceSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Policy.getPolicyOnDevice">
-              <property name="dataSource" ref="dataSourceSecurityAdmin" />
-       </bean>
-       <bean id="addRoleSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Roles.addRole">
-              <property name="dataSource" ref="dataSourceSecurityAdmin" />
-       </bean>
-       <bean id="changeRoleSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Roles.changeRole">
-              <property name="dataSource" ref="dataSourceSecurityAdmin" />
-       </bean>
-       <bean id="deleteRoleSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Roles.deleteRole">
-              <property name="dataSource" ref="dataSourceSecurityAdmin" />
-       </bean>
-       <bean id="getRoleSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Roles.getRole">
-              <property name="dataSource" ref="dataSourceSecurityAdmin" />
-       </bean>
-
-       <bean id="getAccountSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Accounts.GetAccount">
-              <property name="dataSource" ref="dataSourceSecurityAdmin" />
-       </bean>
-       <bean id="addAccountSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Accounts.AddAccount">
-              <property name="dataSource" ref="dataSourceSecurityAdmin" />
-       </bean>
-       <bean id="changeAccountSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Accounts.ChangeAccount">
-              <property name="dataSource" ref="dataSourceSecurityAdmin" />
-       </bean>
-       <bean id="deleteAccountSecurityAdmin" class="accessToDataBase.JDBC.Admin.SecurityAdmin.Accounts.DeleteAccount">
-              <property name="dataSource" ref="dataSourceSecurityAdmin" />
-       </bean>
-
-
        <!--                        -->
        <!--  Authorisation Beans   -->
        <!--                        -->
-       <bean id="checkRunnable" class="accessToDataBase.JDBC.Authorisation.checkRunnable">
+       <bean id="adminClientSession" class="accessToDataBase.JDBC.admin.client.AdminClientSession">
               <property name="dataSource" ref="dataSourceAuthorisation" />
        </bean>
-       <bean id="getAdminType" class="accessToDataBase.JDBC.Authorisation.getAdminType">
+       <bean id="myAccount" class="accessToDataBase.JDBC.admin.client.MyAccount">
               <property name="dataSource" ref="dataSourceAuthorisation" />
        </bean>
 
